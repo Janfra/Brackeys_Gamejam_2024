@@ -390,8 +390,10 @@ height = 12.5
 
 [node name="PlayerMovement" type="CharacterBody2D"]
 script = ExtResource("1_uvj31")
-_base_speed = 100.0
+_base_speed = 60.0
 _deceleration_percentage = 0.13
+_acceleration_rate = 7.0
+_decelerate_angle_tolerance = -0.4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.5, 0)
@@ -402,6 +404,7 @@ autoplay = "idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1r7pj")
 
-[node name="PlayerAnimations" type="Node" parent="." node_paths=PackedStringArray("player_movement")]
+[node name="PlayerAnimations" type="Node" parent="." node_paths=PackedStringArray("_player_movement", "_animation_player")]
 script = ExtResource("4_gr3r5")
-player_movement = NodePath("..")
+_player_movement = NodePath("..")
+_animation_player = NodePath("../AnimatedSprite2D")

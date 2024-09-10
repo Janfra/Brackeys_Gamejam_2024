@@ -35,11 +35,15 @@ func _physics_process(_delta):
 	
 	if direction_input.is_zero_approx():
 		_decelerate()
+		if _has_stopped_moving():
+			stopped_moving.emit()
+		
 	else:
 		if _is_opposite_direction_to_movement(direction_input, _decelerate_angle_tolerance):
 			_clear_accumulated__acceleration()
 		_accelerate(direction_input)
 		_register_valid_movement_input(direction_input)
+		
 	
 	_last_frame_direction = direction_input
 	move_and_slide()
@@ -55,6 +59,10 @@ func _decelerate() -> void:
 	velocity.x = move_toward(velocity.x, 0, decelaration_rate)
 	velocity.y = move_toward(velocity.y, 0, decelaration_rate)
 	_acceleration = move_toward(_acceleration, 0, decelaration_rate)
+	
+
+func _has_stopped_moving() -> bool:
+	return velocity.is_zero_approx()
 	
 
 func _accelerate(direction : Vector2) -> void:
@@ -78,7 +86,7 @@ func _clear_accumulated__acceleration() -> void:
 	
 
 func _register_valid_movement_input(direction_input : Vector2) -> void:
-	if not _last_input_direction.is_equal_approx(direction_input):
+	if not _last_input_direction.is_equal_approx(direction_input) or _last_frame_direction.is_zero_approx():
 		new_valid_movement_input.emit(direction_input)
 	_last_input_direction = direction_input
 	
