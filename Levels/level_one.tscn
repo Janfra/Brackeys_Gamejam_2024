@@ -21,3 +21,10 @@ zoom = Vector2(2.87, 2.87)
 [node name="ShootingPoint" parent="." instance=ExtResource("3_1etgb")]
 position = Vector2(38, 10)
 _shooting_direction = Vector2(0, 1)
+
+[node name="ShootingPoint2" parent="." node_paths=PackedStringArray("_shot_particles", "_timer") instance=ExtResource("3_1etgb")]
+position = Vector2(62, 10)
+_shot_particles = NodePath("../ShootingPoint/ShotParticles")
+_timer = NodePath("../ShootingPoint/Timer")
+_warning_duration = 3.0
+_shooting_direction = Vector2(0, 1)

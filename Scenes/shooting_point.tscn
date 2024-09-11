@@ -24,13 +24,13 @@ angle_max = 360.0
 direction = Vector3(0, 0, 0)
 flatness = 0.5
 initial_velocity_min = 3.0
-initial_velocity_max = 11.0
+initial_velocity_max = 30.0
 orbit_velocity_min = -0.225
 orbit_velocity_max = 0.7
 gravity = Vector3(0, 0, 0)
 damping_max = 1.2
-scale_min = 0.9
-scale_max = 1.6
+scale_min = 1.5
+scale_max = 2.5
 scale_curve = SubResource("CurveTexture_b0dlk")
 alpha_curve = SubResource("CurveTexture_uwy0f")
 
@@ -45,9 +45,8 @@ _delay_duration = 0.0
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_besi0")
-lifetime = 2.0
+lifetime = 0.6
 one_shot = true
-speed_scale = 1.4
 explosiveness = 1.0
 
 [node name="Timer" type="Timer" parent="."]

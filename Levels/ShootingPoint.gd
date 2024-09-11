@@ -29,7 +29,7 @@ func _ready():
 	_set_timeout(_on_delay_completed.bind(), _delay_duration)
 	
 
-func _generate_bullet() -> void:
+func _generate_bullet(delay : float) -> void:
 	print("Generating")
 	var bullet_instance: Bullet = _bullet.instantiate() as Bullet
 	assert(bullet_instance)
@@ -37,6 +37,7 @@ func _generate_bullet() -> void:
 	bullet_instance.global_position = self.position
 	bullet_instance.owner = self
 	add_sibling(bullet_instance)
+	bullet_instance.set_delay_before_shooting(delay)
 	
 	assert(not _queued_bullet)
 	_queued_bullet = bullet_instance
@@ -44,15 +45,14 @@ func _generate_bullet() -> void:
 
 func _on_delay_completed() -> void:
 	print("Delay finished")
-	_generate_bullet()
+	_generate_bullet(_warning_duration)
 	_set_timeout(_on_warning_completed.bind(), _warning_duration)
 	
 
 func _on_warning_completed() -> void:
 	print("Warning complete")
-	_shot_particles.emitting = true
-	
 	if is_instance_valid(_queued_bullet):
+		_shot_particles.emitting = true
 		var bullet_config: Bullet.BulletData = Bullet.BulletData.new()
 		bullet_config.direction = _shooting_direction
 		_queued_bullet.shoot(bullet_config)
