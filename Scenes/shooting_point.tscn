@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://c2kdkfjcr3ucc"]
+
+[ext_resource type="Script" path="res://Levels/ShootingPoint.gd" id="1_83bxk"]
+[ext_resource type="PackedScene" uid="uid://dv0yfjruswxj4" path="res://Scenes/bullet.tscn" id="2_de3tu"]
+
+[sub_resource type="Curve" id="Curve_i2804"]
+_data = [Vector2(0, 0.098901), 0.0, 0.336398, 0, 0, Vector2(0.78, 1), -0.699301, -0.699301, 0, 0, Vector2(1, 0), -2.32708, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_uwy0f"]
+curve = SubResource("Curve_i2804")
+
+[sub_resource type="Curve" id="Curve_r1x08"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.758242), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_b0dlk"]
+curve = SubResource("Curve_r1x08")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_besi0"]
+lifetime_randomness = 0.61
+particle_flag_disable_z = true
+angle_max = 360.0
+direction = Vector3(0, 0, 0)
+flatness = 0.5
+initial_velocity_min = 3.0
+initial_velocity_max = 11.0
+orbit_velocity_min = -0.225
+orbit_velocity_max = 0.7
+gravity = Vector3(0, 0, 0)
+damping_max = 1.2
+scale_min = 0.9
+scale_max = 1.6
+scale_curve = SubResource("CurveTexture_b0dlk")
+alpha_curve = SubResource("CurveTexture_uwy0f")
+
+[node name="ShootingPoint" type="Node2D" node_paths=PackedStringArray("_shot_particles", "_timer")]
+script = ExtResource("1_83bxk")
+_bullet = ExtResource("2_de3tu")
+_shot_particles = NodePath("ShotParticles")
+_timer = NodePath("Timer")
+_delay_duration = 0.0
+
+[node name="ShotParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_besi0")
+lifetime = 2.0
+one_shot = true
+speed_scale = 1.4
+explosiveness = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

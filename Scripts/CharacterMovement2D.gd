@@ -39,8 +39,12 @@ func _physics_process(_delta):
 			stopped_moving.emit()
 		
 	else:
+		if get_real_velocity().is_zero_approx():
+			stopped_moving.emit()
+			_clear_accumulated_acceleration()
+		
 		if _is_opposite_direction_to_movement(direction_input, _decelerate_angle_tolerance):
-			_clear_accumulated__acceleration()
+			_clear_accumulated_acceleration()
 		_accelerate(direction_input)
 		_register_valid_movement_input(direction_input)
 		
@@ -80,7 +84,7 @@ func _is_opposite_direction_to_movement(direction : Vector2, angle_tolerance : f
 	return _last_frame_direction.dot(direction) <= angle_tolerance
 	
 
-func _clear_accumulated__acceleration() -> void:
+func _clear_accumulated_acceleration() -> void:
 	_acceleration = 0
 	input_cancelled_acceleration.emit()
 	

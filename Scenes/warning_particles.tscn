@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://beld8lcjaj564"]
+
+[sub_resource type="Curve" id="Curve_i2804"]
+_data = [Vector2(0, 0.098901), 0.0, 0.336398, 0, 0, Vector2(0.78, 1), -0.699301, -0.699301, 0, 0, Vector2(1, 0), -2.32708, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2mhf0"]
+curve = SubResource("Curve_i2804")
+
+[sub_resource type="Curve" id="Curve_n3ru2"]
+min_value = 2.0
+max_value = 6.0
+_data = [Vector2(0, 2), 0.0, 1.1712, 0, 0, Vector2(0.78, 2.56044), -0.989011, -0.989011, 0, 0, Vector2(1, 6), 3.23986, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kwvk4"]
+curve = SubResource("Curve_n3ru2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_msabr"]
+lifetime_randomness = 0.03
+particle_flag_disable_z = true
+angle_max = 360.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_kwvk4")
+hue_variation_curve = SubResource("CurveTexture_2mhf0")
+
+[node name="WarningParticles" type="GPUParticles2D"]
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_msabr")
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0

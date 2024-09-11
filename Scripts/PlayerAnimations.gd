@@ -79,7 +79,8 @@ func _play_animation(animation : String, override : bool = false, play_speed : f
 		return
 	
 	if override:
-		_animation_player.animation_looped.disconnect(_play_animation_on_finished.bind())
+		if _animation_player.animation_looped.is_connected(_play_animation_on_finished.bind()):
+			_animation_player.animation_looped.disconnect(_play_animation_on_finished.bind())
 		_animation_player.play(animation, play_speed)
 	else:
 		if _animation_player.is_playing():

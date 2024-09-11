@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cybgj2nncdenh"
-path="res://.godot/imported/All_Fire_Bullet_Pixel_16x16_02.png-d408956eda995c91d3630d213f9b694e.ctex"
+uid="uid://ci20jleplykvg"
+path="res://.godot/imported/white_square.png-40c6fe779417c6c4b3a9da950c966fdb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/VFXs/All_Fire_Bullet_Pixel_16x16_02.png"
-dest_files=["res://.godot/imported/All_Fire_Bullet_Pixel_16x16_02.png-d408956eda995c91d3630d213f9b694e.ctex"]
+source_file="res://Assets/VFXs/white_square.png"
+dest_files=["res://.godot/imported/white_square.png-40c6fe779417c6c4b3a9da950c966fdb.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=16
 detect_3d/compress_to=1
