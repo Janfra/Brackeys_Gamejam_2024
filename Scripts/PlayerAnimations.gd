@@ -15,27 +15,35 @@ const RUN_DOWN = "run_down"
 const RUN_UP = "run_up"
 const RUN_RIGHT = "run_right"
 const RUN_LEFT = "run_left"
+
+const DEATH_ANIMATIONS = "death_"
 #endregion
 class QueuedAnimation:
 	var animation: String
 	var play_speed: float
 	
 
+@export_category("Dependencies")
 @export
-var _player_movement: CharacterMovement2D
+var _player_movement: PlayerMovement2D
+@export
+var _health: Health
 @export
 var _animation_player: AnimatedSprite2D
 
 var _current_facing_direction: FacingDirection = FacingDirection.DOWN
 var _currently_queued_animation: QueuedAnimation = QueuedAnimation.new()
+var _is_enabled: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if not _player_movement:
 		return
 	
+	_is_enabled = true
 	_player_movement.new_valid_movement_input.connect(_update_run_animation.bind())
 	_player_movement.stopped_moving.connect(_update_idle_animation.bind())
+	_health.died.connect(_on_death.bind())
 	
 
 func _update_run_animation(direction_input : Vector2) -> void:
@@ -48,11 +56,11 @@ func _update_run_animation(direction_input : Vector2) -> void:
 		_set_horizontal_facing_direction(horizontal_direction)
 	
 	var animation_to_play = _get_animation_based_on_current_direction(RUN_ANIMATIONS)
-	_play_animation(animation_to_play, true)
+	_play_animation(animation_to_play)
 
 func _update_idle_animation() -> void:
 	var animation_to_play = _get_animation_based_on_current_direction(IDLE_ANIMATIONS)
-	_play_animation(animation_to_play, true)
+	_play_animation(animation_to_play)
 	
 
 func _set_vertical_facing_direction(y_input : float) -> void:
@@ -74,8 +82,8 @@ func _get_animation_based_on_current_direction(animation_prefix : String) -> Str
 	return animation_prefix.to_lower()
 	
 
-func _play_animation(animation : String, override : bool = false, play_speed : float = 1.0) -> void:
-	if not _animation_player:
+func _play_animation(animation : String, override : bool = true, play_speed : float = 1.0) -> void:
+	if not _animation_player or not _is_enabled:
 		return
 	
 	if override:
@@ -94,4 +102,11 @@ func _play_animation(animation : String, override : bool = false, play_speed : f
 
 func _play_animation_on_finished() -> void:
 	_animation_player.play(_currently_queued_animation.animation, _currently_queued_animation.play_speed)
+	
+
+func _on_death() -> void:
+	var animation_to_play = _get_animation_based_on_current_direction(DEATH_ANIMATIONS)
+	_animation_player.animation_finished.connect(GameManager.set_game_state.bind(GameManager.GameStates.Lose))
+	_play_animation(animation_to_play)
+	_is_enabled = false
 	

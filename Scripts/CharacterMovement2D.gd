@@ -1,4 +1,4 @@
-class_name CharacterMovement2D
+class_name PlayerMovement2D
 extends CharacterBody2D
 
 signal input_cancelled_acceleration
@@ -10,6 +10,11 @@ const MOVE_RIGHT = "move_right"
 const MOVE_UP = "move_up"
 const MOVE_DOWN = "move_down"
 
+@export_category("Dependencies")
+@export
+var _health : Health
+
+@export_category("Config")
 @export 
 var _base_speed: float = 300.0
 @export 
@@ -25,11 +30,27 @@ var _acceleration: float
 var _last_frame_direction: Vector2
 var _last_input_direction: Vector2
 
+var _is_enabled: bool = true
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 # var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready() -> void:
+	_health.died.connect(_disable_movement.bind())
+	
 
-func _physics_process(_delta):
+func _disable_movement() -> void:
+	_is_enabled = false
+	
+
+func _enable_movement() -> void:
+	_is_enabled = true
+	
+
+func _physics_process(_delta) -> void:
+	if not _is_enabled:
+		return
+	
 	# Get the input direction and handle the movement/deceleration.
 	var direction_input: Vector2 = _get_direction_input()
 	

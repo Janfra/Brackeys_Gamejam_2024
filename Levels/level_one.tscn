@@ -20,10 +20,12 @@ zoom = Vector2(2.87, 2.87)
 
 [node name="ShootingPoint" parent="." instance=ExtResource("3_1etgb")]
 position = Vector2(38, 10)
+_delay_duration = 1.0
 _shooting_direction = Vector2(0, 1)
 
 [node name="ShootingPoint2" parent="." instance=ExtResource("3_1etgb")]
 position = Vector2(0, 26)
+_delay_duration = 1.0
 _shooting_direction = Vector2(1, 0)
 
 [node name="ShootingPoint3" parent="." instance=ExtResource("3_1etgb")]
@@ -31,3 +33,7 @@ position = Vector2(70, 10)
 _delay_duration = 2.0
 _warning_duration = 3.0
 _shooting_direction = Vector2(0, 1)
+
+[node name="ShootingPoint4" parent="." instance=ExtResource("3_1etgb")]
+position = Vector2(0, 58)
+_shooting_direction = Vector2(1, 0)

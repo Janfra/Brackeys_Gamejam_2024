@@ -2,12 +2,13 @@ class_name Bullet
 extends Area2D
 
 const VECTOR_TO_ROTATION = { Vector2.DOWN: 0.0, Vector2.LEFT: 90.0,  Vector2.UP: 180.0, Vector2.RIGHT: 270.0 }
-
+const INVALID_DELAY = -1
+const BULLET_DAMAGE = 1
+#region Shader Consts
 const SHADER_OPACITY_PARAM = "OpacityExtent"
 const SHADER_NO_OPACITY = 0
-const SHADER_MAX_OPACITY = 6
-
-const INVALID_DELAY = -1
+const SHADER_MAX_OPACITY = 2.5
+#endregion
 
 class BulletData:
 	var speed: float
@@ -34,9 +35,11 @@ var bullet_config: BulletData = BulletData.new()
 var distance_travelled: Vector2 = Vector2.ZERO
 var _is_active: bool = false
 
+#region Shader Vars
 var _shoot_delay: float = INVALID_DELAY
 var _current_delay: float = INVALID_DELAY
 var _shader: ShaderMaterial
+#endregion
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -82,6 +85,11 @@ func _clear_bullet(_area: Node) -> void:
 	_explosion_particles.finished.connect(queue_free.bind())
 	_explosion_particles.emitting = true
 	
+	var health: Health = Health.get_health_from_node(_area)
+	if health:
+		print("Hit object with health")
+		health.deal_damage(BULLET_DAMAGE)
+	
 
 func _display_delay_progress(delta : float) -> void:
 	if _shoot_delay < 0:
@@ -101,6 +109,8 @@ func _setup_bullet_rotation(shooting_direction : Vector2) -> void:
 	var vector = shooting_direction.normalized()
 	if VECTOR_TO_ROTATION.has(vector):
 		rotation_degrees = VECTOR_TO_ROTATION[vector]
+	else:
+		assert(false)
 	
 
 func _assert_checks() -> void:
@@ -113,6 +123,5 @@ func _assert_checks() -> void:
 func _setup_shader() -> void:
 	_shader = _sprite.material as ShaderMaterial
 	assert(_shader)
-	_shader.shader = _shader.shader.duplicate()
 	_shader.set_shader_parameter(SHADER_OPACITY_PARAM, SHADER_MAX_OPACITY)
 	

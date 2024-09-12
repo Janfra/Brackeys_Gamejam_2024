@@ -27,11 +27,13 @@ func _ready():
 	assert(not _shooting_direction.is_zero_approx())
 	
 	_timer.one_shot = false
-	_set_timeout(_on_delay_completed.bind(), _delay_duration)
+	if _is_delayed():
+		_set_timeout(_on_delay_completed.bind(), _delay_duration)
+	else:
+		_no_delay_setup()
 	
 
 func _generate_bullet(delay : float) -> void:
-	print("Generating")
 	var bullet_instance: Bullet = _bullet.instantiate() as Bullet
 	assert(bullet_instance)
 	add_child(bullet_instance)
@@ -45,19 +47,31 @@ func _generate_bullet(delay : float) -> void:
 	
 
 func _on_delay_completed() -> void:
-	print("Delay finished")
 	_generate_bullet(_warning_duration)
 	_set_timeout(_on_warning_completed.bind(), _warning_duration)
 	
 
 func _on_warning_completed() -> void:
-	print("Warning complete")
 	if is_instance_valid(_queued_bullet):
 		_shot_particles.emitting = true
 		_queued_bullet.shoot()
-		_queued_bullet = null
 	
+	_queued_bullet = null
 	_set_timeout(_on_delay_completed.bind(), _delay_duration)
+	
+
+func _no_delay_setup() -> void:
+	_generate_bullet(_warning_duration)
+	_set_timeout(_on_no_delay_warning_completed.bind(), _warning_duration)
+	
+
+func _on_no_delay_warning_completed() -> void:
+	if is_instance_valid(_queued_bullet):
+		_shot_particles.emitting = true
+		_queued_bullet.shoot()
+	
+	_queued_bullet = null
+	_no_delay_setup()
 	
 
 func _set_timeout(callable : Callable, duration : float) -> void:
@@ -70,4 +84,8 @@ func _set_timeout(callable : Callable, duration : float) -> void:
 	_timer.wait_time = duration
 	_timer.timeout.connect(callable)	
 	_timer.start()
+	
+
+func _is_delayed() -> bool:
+	return _delay_duration > 0
 	

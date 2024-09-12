@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c2kdkfjcr3ucc"]
 
-[ext_resource type="Script" path="res://Levels/ShootingPoint.gd" id="1_83bxk"]
+[ext_resource type="Script" path="res://Scripts/ShootingPoint.gd" id="1_0vya2"]
 [ext_resource type="PackedScene" uid="uid://dv0yfjruswxj4" path="res://Scenes/bullet.tscn" id="2_de3tu"]
 
 [sub_resource type="Curve" id="Curve_i2804"]
@@ -35,7 +35,7 @@ scale_curve = SubResource("CurveTexture_b0dlk")
 alpha_curve = SubResource("CurveTexture_uwy0f")
 
 [node name="ShootingPoint" type="Node2D" node_paths=PackedStringArray("_shot_particles", "_timer")]
-script = ExtResource("1_83bxk")
+script = ExtResource("1_0vya2")
 _bullet = ExtResource("2_de3tu")
 _shot_particles = NodePath("ShotParticles")
 _timer = NodePath("Timer")

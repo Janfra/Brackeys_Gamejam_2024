@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://dv0yfjruswxj4"]
 
-[ext_resource type="Script" path="res://Levels/Bullet.gd" id="1_nmnkm"]
-[ext_resource type="Shader" uid="uid://d1cvais836kr6" path="res://Scenes/bullet.tres" id="2_2rwi5"]
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_5ymol"]
 [ext_resource type="Texture2D" uid="uid://ci20jleplykvg" path="res://Assets/VFXs/white_square.png" id="2_ku54t"]
+[ext_resource type="Shader" uid="uid://d1cvais836kr6" path="res://Shaders/bullet.tres" id="2_vcbbi"]
 
 [sub_resource type="Curve" id="Curve_65byv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -25,7 +25,7 @@ alpha_curve = SubResource("CurveTexture_r84mr")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b3gg0"]
 resource_local_to_scene = true
-shader = ExtResource("2_2rwi5")
+shader = ExtResource("2_vcbbi")
 shader_parameter/OpacityExtent = 10.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5gwp3"]
@@ -59,6 +59,21 @@ scale_max = 5.0
 scale_curve = SubResource("CurveTexture_84424")
 alpha_curve = SubResource("CurveTexture_bivu7")
 
+[sub_resource type="Animation" id="Animation_wwfpe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+
 [sub_resource type="Animation" id="Animation_lcivw"]
 resource_name = "appear"
 length = 0.2
@@ -75,21 +90,6 @@ tracks/0/keys = {
 "values": [Vector2(0.3, 0), Vector2(0.3, 0.3)]
 }
 
-[sub_resource type="Animation" id="Animation_wwfpe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.3, 0.3)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kes6e"]
 _data = {
 "RESET": SubResource("Animation_wwfpe"),
@@ -97,7 +97,7 @@ _data = {
 }
 
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("_trail_particles", "_explosion_particles", "_sprite", "_animation_player")]
-script = ExtResource("1_nmnkm")
+script = ExtResource("1_5ymol")
 _trail_particles = NodePath("TrailParticles")
 _explosion_particles = NodePath("ExplosioParticles")
 _sprite = NodePath("Sprite2D")
