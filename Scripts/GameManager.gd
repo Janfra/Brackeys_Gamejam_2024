@@ -3,6 +3,7 @@ extends Node
 ## Autload to handle game states
 
 signal player_losed
+signal player_died
 
 const SCENE_TRANSITION_SCENE = preload("res://Scenes/scene_transition.tscn")
 const TRANSITION_ANIMATION = "fade_in"
@@ -25,6 +26,10 @@ var _main_scene = load(ProjectSettings.get_setting("application/run/main_scene")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func player_has_died() -> void:
+	player_died.emit()
+	
 
 func set_game_state(game_state : GameStates) -> void:
 	_current_state = game_state

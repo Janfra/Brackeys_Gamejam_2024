@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv6vrit3t5sr8"]
+[gd_scene load_steps=6 format=3 uid="uid://dv6vrit3t5sr8"]
 
 [ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Assets/Tiles/tile_set.tres" id="1_yr0gu"]
 [ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="2_s5k14"]
 [ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/shooting_point.tscn" id="3_u4uj3"]
+[ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/ui_game.tscn" id="4_84tfw"]
+[ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/timer_start_trigger.tscn" id="5_yun55"]
 
 [node name="TestLevel" type="Node2D"]
 
@@ -19,7 +21,7 @@ layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(51, 0)
+position = Vector2(40, 0)
 zoom = Vector2(2.87, 2.87)
 
 [node name="PlayerMovement" parent="." instance=ExtResource("2_s5k14")]
@@ -28,6 +30,7 @@ zoom = Vector2(2.87, 2.87)
 position = Vector2(38, 10)
 _is_delayed = true
 _extra_delay_duration = 0.0
+_shot_warning_duration = 1.0
 _shooting_direction = Vector2(0, 1)
 
 [node name="ShootingPoint2" parent="." instance=ExtResource("3_u4uj3")]
@@ -52,3 +55,7 @@ position = Vector2(86, 58)
 _shot_warning_duration = 1.0
 _shooting_direction = Vector2(-1, 0)
 _bullet_speed = 65.0
+
+[node name="UI_Game" parent="." instance=ExtResource("4_84tfw")]
+
+[node name="TimerStartTrigger" parent="." instance=ExtResource("5_yun55")]

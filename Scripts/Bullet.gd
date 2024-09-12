@@ -113,12 +113,13 @@ func _handle_collision(area: Node) -> void:
 	if area is Bullet:
 		_handle_bullet_collision(area)
 		return
+		
 	
-	_disable_bullet.call_deferred()
 	var health: Health = Health.get_health_from_node(area)
 	if health:
 		print("Hit object with health")
 		health.deal_damage(BULLET_DAMAGE)
+	_disable_bullet.call_deferred()
 	
 
 func _handle_bullet_collision(other_bullet : Bullet) -> void:
@@ -131,9 +132,12 @@ func _disable_bullet() -> void:
 	_collision_shape.disabled = true
 	_trail_particles.emitting = false
 	_sprite.hide()
-	_explosion_particles.finished.connect(queue_free.bind())
-	_explosion_particles.emitting = true
 	_has_been_disabled = true
+	
+	var free_callable: Callable = queue_free.bind()
+	if not _explosion_particles.finished.is_connected(free_callable):
+		_explosion_particles.finished.connect(free_callable)
+	_explosion_particles.emitting = true
 	
 
 func _assert_checks() -> void:

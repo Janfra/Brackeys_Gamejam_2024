@@ -80,7 +80,6 @@ void fragment() {
 	opacity_extend = 0.0;
 }
 "
-graph_offset = Vector2(-67.1577, 2.65715)
 mode = 1
 flags/light_only = false
 varyings/opacity_extend = "1,0"

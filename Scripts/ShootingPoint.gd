@@ -35,9 +35,14 @@ func _ready():
 	assert(_shot_particles)
 	assert(_bullet)
 	assert(not _shooting_direction.is_zero_approx())
+	assert(_shot_warning_duration > 0)
 	
 	_timer.one_shot = false
 	if _is_delayed:
+		if _shot_warning_duration < 1:
+			printerr("shot warning cannot be under 1, setting it to 1")
+			_shot_warning_duration = 1
+		
 		_delay_setup()
 	else:
 		_no_delay_setup()

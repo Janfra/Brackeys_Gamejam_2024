@@ -101,7 +101,7 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_5ymol")
 _trail_particles = NodePath("TrailParticles")
-_explosion_particles = NodePath("ExplosioParticles")
+_explosion_particles = NodePath("ExplosionParticles")
 _sprite = NodePath("Sprite2D")
 _animation_player = NodePath("AnimationPlayer")
 _collision_shape = NodePath("CollisionShape2D")
@@ -120,7 +120,7 @@ texture = ExtResource("2_ku54t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5gwp3")
 
-[node name="ExplosioParticles" type="GPUParticles2D" parent="."]
+[node name="ExplosionParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_8dk0g")

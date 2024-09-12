@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm40fldw7onu3"]
+
+[ext_resource type="Script" path="res://Scripts/TimerUI.gd" id="1_tudvx"]
+
+[node name="UI_Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Timer" type="Label" parent="CanvasLayer"]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = -1
+anchor_top = 0.015
+anchor_right = 1.0
+anchor_bottom = 0.015
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+theme_override_font_sizes/font_size = 30
+text = "You will be timed,
+come back to reset the timer"
+horizontal_alignment = 1
+clip_text = true
+script = ExtResource("1_tudvx")

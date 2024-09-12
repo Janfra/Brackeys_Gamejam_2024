@@ -37,6 +37,7 @@ var _is_enabled: bool = true
 
 func _ready() -> void:
 	_health.died.connect(_disable_movement.bind())
+	_health.died.connect(GameManager.player_has_died.bind())
 	
 
 func _disable_movement() -> void:
