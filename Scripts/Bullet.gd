@@ -111,24 +111,19 @@ func _setup_bullet_rotation(shooting_direction : Vector2) -> void:
 
 func _handle_collision(area: Node) -> void:
 	if area is Bullet:
-		if not _is_active:
-			return
-		
-		var bullet: Bullet = area
-		if bullet._is_active:
-			_disable_both_bullets(bullet)
+		_handle_bullet_collision(area)
 		return
 	
-	_disable_bullet()
+	_disable_bullet.call_deferred()
 	var health: Health = Health.get_health_from_node(area)
 	if health:
 		print("Hit object with health")
 		health.deal_damage(BULLET_DAMAGE)
 	
 
-func _disable_both_bullets(other_bullet : Bullet) -> void:
-	other_bullet._disable_bullet()
-	_disable_bullet()
+func _handle_bullet_collision(other_bullet : Bullet) -> void:
+	if other_bullet._is_active and _is_active:
+		_disable_bullet.call_deferred()
 	
 
 func _disable_bullet() -> void:
