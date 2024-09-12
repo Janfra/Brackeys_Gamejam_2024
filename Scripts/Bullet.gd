@@ -4,6 +4,7 @@ extends Area2D
 const VECTOR_TO_ROTATION = { Vector2.DOWN: 0.0, Vector2.LEFT: 90.0,  Vector2.UP: 180.0, Vector2.RIGHT: 270.0 }
 const INVALID_DELAY = -1
 const BULLET_DAMAGE = 1
+
 #region Shader Consts
 const SHADER_OPACITY_PARAM = "OpacityExtent"
 const SHADER_NO_OPACITY = 0
@@ -30,10 +31,13 @@ var _explosion_particles: GPUParticles2D
 var _sprite: Sprite2D
 @export
 var _animation_player: AnimationPlayer
+@export
+var _collision_shape: CollisionShape2D
 
 var bullet_config: BulletData = BulletData.new()
 var distance_travelled: Vector2 = Vector2.ZERO
 var _is_active: bool = false
+var _has_been_disabled: bool = false
 
 #region Shader Vars
 var _shoot_delay: float = INVALID_DELAY
@@ -44,7 +48,8 @@ var _shader: ShaderMaterial
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_assert_checks()
-	body_entered.connect(_clear_bullet.bind())
+	body_entered.connect(_handle_collision.bind())
+	area_entered.connect(_handle_collision.bind())
 	_trail_particles.emitting = false
 	_setup_shader()
 	
@@ -58,6 +63,9 @@ func setup_bullet_for_shooting(set_duration : float, data : BulletData) -> void:
 	
 
 func shoot() -> void:
+	if _has_been_disabled:
+		return
+	
 	_trail_particles.emitting = true
 	_is_active = true
 	
@@ -74,21 +82,9 @@ func _move_bullet(delta : float) -> void:
 	distance_travelled.y = bullet_config.speed * bullet_config.direction.y * delta
 	if distance_travelled.length_squared() >= bullet_config.max_distance * bullet_config.max_distance:
 		print("reached max")
-		_clear_bullet(null)
+		_disable_bullet()
 	
 	global_position += distance_travelled
-	
-
-func _clear_bullet(_area: Node) -> void:
-	_trail_particles.emitting = false
-	_sprite.hide()
-	_explosion_particles.finished.connect(queue_free.bind())
-	_explosion_particles.emitting = true
-	
-	var health: Health = Health.get_health_from_node(_area)
-	if health:
-		print("Hit object with health")
-		health.deal_damage(BULLET_DAMAGE)
 	
 
 func _display_delay_progress(delta : float) -> void:
@@ -111,6 +107,38 @@ func _setup_bullet_rotation(shooting_direction : Vector2) -> void:
 		rotation_degrees = VECTOR_TO_ROTATION[vector]
 	else:
 		assert(false)
+	
+
+func _handle_collision(area: Node) -> void:
+	if area is Bullet:
+		if not _is_active:
+			return
+		
+		var bullet: Bullet = area
+		if bullet._is_active:
+			_disable_both_bullets(bullet)
+		return
+	
+	_disable_bullet()
+	var health: Health = Health.get_health_from_node(area)
+	if health:
+		print("Hit object with health")
+		health.deal_damage(BULLET_DAMAGE)
+	
+
+func _disable_both_bullets(other_bullet : Bullet) -> void:
+	other_bullet._disable_bullet()
+	_disable_bullet()
+	
+
+func _disable_bullet() -> void:
+	_is_active = false
+	_collision_shape.disabled = true
+	_trail_particles.emitting = false
+	_sprite.hide()
+	_explosion_particles.finished.connect(queue_free.bind())
+	_explosion_particles.emitting = true
+	_has_been_disabled = true
 	
 
 func _assert_checks() -> void:

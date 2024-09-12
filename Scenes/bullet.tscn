@@ -96,12 +96,15 @@ _data = {
 "appear": SubResource("Animation_lcivw")
 }
 
-[node name="Bullet" type="Area2D" node_paths=PackedStringArray("_trail_particles", "_explosion_particles", "_sprite", "_animation_player")]
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("_trail_particles", "_explosion_particles", "_sprite", "_animation_player", "_collision_shape")]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_5ymol")
 _trail_particles = NodePath("TrailParticles")
 _explosion_particles = NodePath("ExplosioParticles")
 _sprite = NodePath("Sprite2D")
 _animation_player = NodePath("AnimationPlayer")
+_collision_shape = NodePath("CollisionShape2D")
 
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
 process_material = SubResource("ParticleProcessMaterial_0t6ow")

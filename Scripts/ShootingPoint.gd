@@ -7,15 +7,25 @@ var _bullet: PackedScene
 @export
 var _shot_particles: GPUParticles2D
 @export 
+var _warning_particles: GPUParticles2D
+@export 
 var _timer: Timer
 
 @export_category("Config")
+@export_subgroup("Delay")
+## If true, lifetime of the warning particles will be base duration
+@export
+var _is_delayed: bool
 @export 
-var _delay_duration: float = 4
+var _extra_delay_duration: float = 1
+
+@export_subgroup("Shooting")
 @export
-var _warning_duration: float = 4
+var _shot_warning_duration: float = 4
 @export
-var _shooting_direction: Vector2
+var _shooting_direction: Vector2 = Vector2.ZERO
+@export
+var _bullet_speed: float = 45.0
 
 var _queued_bullet: Bullet
 
@@ -27,8 +37,8 @@ func _ready():
 	assert(not _shooting_direction.is_zero_approx())
 	
 	_timer.one_shot = false
-	if _is_delayed():
-		_set_timeout(_on_delay_completed.bind(), _delay_duration)
+	if _is_delayed:
+		_delay_setup()
 	else:
 		_no_delay_setup()
 	
@@ -41,14 +51,20 @@ func _generate_bullet(delay : float) -> void:
 	
 	var bullet_config: Bullet.BulletData = Bullet.BulletData.new()
 	bullet_config.direction = _shooting_direction
+	bullet_config.speed = _bullet_speed
 	bullet_instance.setup_bullet_for_shooting(delay, bullet_config)
 	assert(not _queued_bullet)
 	_queued_bullet = bullet_instance
 	
 
+func _display_warning_particles() -> void:
+	_warning_particles.emitting = true
+	_set_timeout(_on_delay_completed.bind(), _warning_particles.lifetime)
+	
+
 func _on_delay_completed() -> void:
-	_generate_bullet(_warning_duration)
-	_set_timeout(_on_warning_completed.bind(), _warning_duration)
+	_generate_bullet(_shot_warning_duration)
+	_set_timeout(_on_warning_completed.bind(), _shot_warning_duration)
 	
 
 func _on_warning_completed() -> void:
@@ -57,12 +73,19 @@ func _on_warning_completed() -> void:
 		_queued_bullet.shoot()
 	
 	_queued_bullet = null
-	_set_timeout(_on_delay_completed.bind(), _delay_duration)
+	_delay_setup()
+	
+
+func _delay_setup() -> void:
+	if _is_extra_delayed():
+		_set_timeout(_display_warning_particles.bind(), _extra_delay_duration)
+	else:
+		_display_warning_particles()
 	
 
 func _no_delay_setup() -> void:
-	_generate_bullet(_warning_duration)
-	_set_timeout(_on_no_delay_warning_completed.bind(), _warning_duration)
+	_generate_bullet(_shot_warning_duration)
+	_set_timeout(_on_no_delay_warning_completed.bind(), _shot_warning_duration)
 	
 
 func _on_no_delay_warning_completed() -> void:
@@ -86,6 +109,6 @@ func _set_timeout(callable : Callable, duration : float) -> void:
 	_timer.start()
 	
 
-func _is_delayed() -> bool:
-	return _delay_duration > 0
+func _is_extra_delayed() -> bool:
+	return _extra_delay_duration > 0
 	

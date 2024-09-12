@@ -579,6 +579,8 @@ animations = [{
 }]
 
 [node name="PlayerMovement" type="CharacterBody2D" node_paths=PackedStringArray("_health")]
+collision_layer = 2
+collision_mask = 11
 script = ExtResource("1_uvj31")
 _health = NodePath("Health")
 _base_speed = 60.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2kdkfjcr3ucc"]
+[gd_scene load_steps=15 format=3 uid="uid://c2kdkfjcr3ucc"]
 
 [ext_resource type="Script" path="res://Scripts/ShootingPoint.gd" id="1_0vya2"]
 [ext_resource type="PackedScene" uid="uid://dv0yfjruswxj4" path="res://Scenes/bullet.tscn" id="2_de3tu"]
@@ -34,18 +34,60 @@ scale_max = 2.5
 scale_curve = SubResource("CurveTexture_b0dlk")
 alpha_curve = SubResource("CurveTexture_uwy0f")
 
-[node name="ShootingPoint" type="Node2D" node_paths=PackedStringArray("_shot_particles", "_timer")]
+[sub_resource type="Curve" id="Curve_pymys"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.193333, 0.604396), 0.0, 0.0, 0, 0, Vector2(0.466667, 0.230769), 0.0, 0.0, 0, 0, Vector2(0.686667, 0.351648), 0.0, 0.0, 0, 0, Vector2(0.88, 0.230769), 0.0, 0.0, 0, 0, Vector2(0.986667, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="CurveTexture" id="CurveTexture_fvjsn"]
+curve = SubResource("Curve_pymys")
+
+[sub_resource type="Gradient" id="Gradient_od6y1"]
+offsets = PackedFloat32Array(0, 0.319672, 0.52459, 0.729508, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 0.764706, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u5qgd"]
+gradient = SubResource("Gradient_od6y1")
+
+[sub_resource type="Curve" id="Curve_m56qk"]
+_data = [Vector2(0, 0.813187), 0.0, 0.0, 0, 0, Vector2(0.82, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.923077), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_idlyb"]
+curve = SubResource("Curve_m56qk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nwhmg"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+angle_min = -10.0
+angle_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_idlyb")
+color = Color(1, 1, 1, 0.729412)
+color_ramp = SubResource("GradientTexture1D_u5qgd")
+alpha_curve = SubResource("CurveTexture_fvjsn")
+
+[node name="ShootingPoint" type="Node2D" node_paths=PackedStringArray("_shot_particles", "_warning_particles", "_timer")]
 script = ExtResource("1_0vya2")
 _bullet = ExtResource("2_de3tu")
 _shot_particles = NodePath("ShotParticles")
+_warning_particles = NodePath("WarningParticles")
 _timer = NodePath("Timer")
-_delay_duration = 0.0
 
 [node name="ShotParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_besi0")
 lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+
+[node name="WarningParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 6
+process_material = SubResource("ParticleProcessMaterial_nwhmg")
+lifetime = 0.75
 one_shot = true
 explosiveness = 1.0
 
