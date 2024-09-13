@@ -83,7 +83,6 @@ func _move_bullet(delta : float) -> void:
 	_velocity.y = bullet_config.speed * bullet_config.direction.y * delta
 	distance_travelled += _velocity
 	if distance_travelled.length_squared() >= bullet_config.max_distance * bullet_config.max_distance:
-		print("reached max")
 		_disable_bullet()
 	
 	global_position += _velocity

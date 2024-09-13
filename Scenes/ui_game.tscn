@@ -23,7 +23,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 theme_override_font_sizes/font_size = 30
 text = "You will be timed,
-come back to reset the timer"
+come back to the start to reset the timer"
 horizontal_alignment = 1
 clip_text = true
 script = ExtResource("1_tudvx")

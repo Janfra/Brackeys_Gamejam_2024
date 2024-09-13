@@ -18,6 +18,8 @@ var _timer: Timer
 var _is_delayed: bool = true
 @export 
 var _extra_delay_duration: float = 1
+@export
+var _cancel_shot_every: int = -1
 
 @export_subgroup("Shooting")
 @export
@@ -27,9 +29,10 @@ var _shooting_direction: Vector2 = Vector2.ZERO
 @export
 var _bullet_speed: float = 45.0
 @export
-var _max_distance: float = 1000.0
+var _max_distance: float = 1000.0 
 
 var _queued_bullet: Bullet
+var _generated_bullet_count: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -50,7 +53,20 @@ func _ready():
 		_no_delay_setup()
 	
 
+func _delay_setup() -> void:
+	if _is_extra_delayed():
+		_set_timeout(_display_warning_particles.bind(), _extra_delay_duration)
+	else:
+		_display_warning_particles()
+	
+
+func _no_delay_setup() -> void:
+	_generate_bullet(_shot_warning_duration)
+	_set_timeout(_on_no_delay_warning_completed.bind(), _shot_warning_duration)
+	
+
 func _generate_bullet(delay : float) -> void:
+	_generated_bullet_count += 1
 	var bullet_instance: Bullet = _bullet.instantiate() as Bullet
 	assert(bullet_instance)
 	add_child(bullet_instance)
@@ -60,6 +76,13 @@ func _generate_bullet(delay : float) -> void:
 	bullet_config.direction = _shooting_direction
 	bullet_config.speed = _bullet_speed
 	bullet_config.max_distance = _max_distance
+	
+	if _cancel_shot_every > 0 and _generated_bullet_count >= _cancel_shot_every + 1:
+		_generated_bullet_count = 0
+		bullet_config.max_distance = 0
+		delay = -1
+		
+	
 	bullet_instance.setup_bullet_for_shooting(delay, bullet_config)
 	assert(not _queued_bullet)
 	_queued_bullet = bullet_instance
@@ -76,33 +99,22 @@ func _on_delay_completed() -> void:
 	
 
 func _on_warning_completed() -> void:
-	if is_instance_valid(_queued_bullet):
-		_shot_particles.emitting = true
-		_queued_bullet.shoot()
-	
-	_queued_bullet = null
+	_shoot_bullet()
 	_delay_setup()
 	
 
-func _delay_setup() -> void:
-	if _is_extra_delayed():
-		_set_timeout(_display_warning_particles.bind(), _extra_delay_duration)
-	else:
-		_display_warning_particles()
-	
-
-func _no_delay_setup() -> void:
-	_generate_bullet(_shot_warning_duration)
-	_set_timeout(_on_no_delay_warning_completed.bind(), _shot_warning_duration)
-	
 
 func _on_no_delay_warning_completed() -> void:
+	_shoot_bullet()
+	_no_delay_setup()
+	
+
+func _shoot_bullet() -> void:
 	if is_instance_valid(_queued_bullet):
 		_shot_particles.emitting = true
 		_queued_bullet.shoot()
 	
 	_queued_bullet = null
-	_no_delay_setup()
 	
 
 func _set_timeout(callable : Callable, duration : float) -> void:
