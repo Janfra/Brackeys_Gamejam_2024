@@ -10,13 +10,13 @@ const TRANSITION_ANIMATION = "fade_in"
 
 enum GameStates
 {
-	MainMenu,
-	Play,
-	Lose,
-	Pause,
+	MAIN_MENU,
+	PLAY,
+	LOSE,
+	PAUSE,
 }
 
-var _initial_state: GameStates = GameStates.Play
+var _initial_state: GameStates = GameStates.PLAY
 var _current_state: GameStates = _initial_state
 
 var _is_transitioning: bool
@@ -38,7 +38,7 @@ func set_game_state(game_state : GameStates) -> void:
 
 func _handle_new_game_state() -> void:
 	match _current_state:
-		GameStates.Lose:
+		GameStates.LOSE:
 			player_losed.emit()
 			load_level(_main_scene)
 		

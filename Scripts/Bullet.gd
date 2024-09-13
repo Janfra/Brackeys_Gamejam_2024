@@ -36,6 +36,7 @@ var _collision_shape: CollisionShape2D
 
 var bullet_config: BulletData = BulletData.new()
 var distance_travelled: Vector2 = Vector2.ZERO
+var _velocity: Vector2 = Vector2.ZERO
 var _is_active: bool = false
 var _has_been_disabled: bool = false
 
@@ -78,13 +79,14 @@ func _physics_process(delta : float) -> void:
 	
 
 func _move_bullet(delta : float) -> void:
-	distance_travelled.x = bullet_config.speed * bullet_config.direction.x * delta
-	distance_travelled.y = bullet_config.speed * bullet_config.direction.y * delta
+	_velocity.x = bullet_config.speed * bullet_config.direction.x * delta
+	_velocity.y = bullet_config.speed * bullet_config.direction.y * delta
+	distance_travelled += _velocity
 	if distance_travelled.length_squared() >= bullet_config.max_distance * bullet_config.max_distance:
 		print("reached max")
 		_disable_bullet()
 	
-	global_position += distance_travelled
+	global_position += _velocity
 	
 
 func _display_delay_progress(delta : float) -> void:

@@ -15,7 +15,7 @@ var _timer: Timer
 @export_subgroup("Delay")
 ## If true, lifetime of the warning particles will be base duration
 @export
-var _is_delayed: bool
+var _is_delayed: bool = true
 @export 
 var _extra_delay_duration: float = 1
 
@@ -26,6 +26,8 @@ var _shot_warning_duration: float = 4
 var _shooting_direction: Vector2 = Vector2.ZERO
 @export
 var _bullet_speed: float = 45.0
+@export
+var _max_distance: float = 1000.0
 
 var _queued_bullet: Bullet
 
@@ -57,6 +59,7 @@ func _generate_bullet(delay : float) -> void:
 	var bullet_config: Bullet.BulletData = Bullet.BulletData.new()
 	bullet_config.direction = _shooting_direction
 	bullet_config.speed = _bullet_speed
+	bullet_config.max_distance = _max_distance
 	bullet_instance.setup_bullet_for_shooting(delay, bullet_config)
 	assert(not _queued_bullet)
 	_queued_bullet = bullet_instance

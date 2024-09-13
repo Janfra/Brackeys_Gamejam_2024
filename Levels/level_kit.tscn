@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqkix1hbemlg2"]
+
+[ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/ui_game.tscn" id="1_lk1w2"]
+[ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Assets/Tiles/tile_set.tres" id="2_nmydw"]
+[ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="3_5frhg"]
+[ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/timer_start_trigger.tscn" id="4_bkhjy"]
+
+[node name="LevelKit" type="Node2D"]
+
+[node name="UI_Game" parent="." instance=ExtResource("1_lk1w2")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-144, 0)
+tile_set = ExtResource("2_nmydw")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131072, 983040, 24, -65536, 983040, 25, 0, 983040, 25, 65536, 983040, 26, -131071, 1048576, 24, -65535, 1048576, 25, 1, 1048576, 1, 65537, 1048576, 26, -65534, 1048576, 25, 2, 1048576, 25, -131069, 1114112, 24, -65533, 1835008, 25, 3, 1835008, 26, 65539, 1114112, 26, -65532, 65536, 24, 4, 65536, 26, -65523, 65536, 24, 13, 65536, 26, -131058, 983040, 24, -65522, 1769472, 25, 14, 1769472, 26, 65550, 983040, 26, -131057, 1048576, 24, -65521, 1048576, 25, 15, 1048576, 25, 65551, 1048576, 26, -131070, 1048576, 24, 65538, 1048576, 26, -131056, 1048576, 24, -65520, 1048576, 25, 16, 1048576, 25, 65552, 1048576, 26, -131055, 1114112, 24, -65519, 1114112, 25, 17, 1114112, 25, 65553, 1114112, 26, 131072, 983040, 27, 131073, 1048576, 27, 131074, 1048576, 27, 131075, 1835008, 28, 65540, 917504, 27, 131086, 1769472, 28, 131088, 1048576, 27, 131089, 1114112, 27, 131087, 1703936, 27, 65549, 786432, 28)
+
+[node name="PlayerMovement" parent="." instance=ExtResource("3_5frhg")]
+position = Vector2(-112, 0)
+
+[node name="TimerStartTrigger" parent="." instance=ExtResource("4_bkhjy")]
+position = Vector2(-112, 0)
+activation_type = 0
+trigger_type = 0

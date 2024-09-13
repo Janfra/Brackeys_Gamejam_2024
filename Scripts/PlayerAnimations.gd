@@ -106,7 +106,7 @@ func _play_animation_on_finished() -> void:
 
 func _on_death() -> void:
 	var animation_to_play = _get_animation_based_on_current_direction(DEATH_ANIMATIONS)
-	_animation_player.animation_finished.connect(GameManager.set_game_state.bind(GameManager.GameStates.Lose))
+	_animation_player.animation_finished.connect(GameManager.set_game_state.bind(GameManager.GameStates.LOSE))
 	_play_animation(animation_to_play)
 	_is_enabled = false
 	

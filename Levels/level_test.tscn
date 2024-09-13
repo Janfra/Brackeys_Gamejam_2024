@@ -28,19 +28,16 @@ zoom = Vector2(2.87, 2.87)
 
 [node name="ShootingPoint" parent="." instance=ExtResource("3_u4uj3")]
 position = Vector2(38, 10)
-_is_delayed = true
 _extra_delay_duration = 0.0
 _shot_warning_duration = 1.0
 _shooting_direction = Vector2(0, 1)
 
 [node name="ShootingPoint2" parent="." instance=ExtResource("3_u4uj3")]
 position = Vector2(0, 26)
-_is_delayed = true
 _shooting_direction = Vector2(1, 0)
 
 [node name="ShootingPoint3" parent="." instance=ExtResource("3_u4uj3")]
 position = Vector2(70, 10)
-_is_delayed = true
 _extra_delay_duration = 4.0
 _shooting_direction = Vector2(0, 1)
 
@@ -59,3 +56,4 @@ _bullet_speed = 65.0
 [node name="UI_Game" parent="." instance=ExtResource("4_84tfw")]
 
 [node name="TimerStartTrigger" parent="." instance=ExtResource("5_yun55")]
+activation_type = 0

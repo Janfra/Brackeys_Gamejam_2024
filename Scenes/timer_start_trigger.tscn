@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddgtym6cjqkvo"]
 
-[ext_resource type="Script" path="res://Scripts/TimerStartTrigger.gd" id="1_4ckbr"]
+[ext_resource type="Script" path="res://Scripts/BaseTimerTrigger.gd" id="1_4ckbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uaui5"]
-size = Vector2(16, 16)
+size = Vector2(64, 64)
 
 [node name="TimerStartTrigger" type="Area2D"]
 position = Vector2(-2, 2)

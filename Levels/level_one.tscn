@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjukh3ks8fp28"]
+
+[ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Assets/Tiles/tile_set.tres" id="1_e65on"]
+[ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/ui_game.tscn" id="1_yqu0t"]
+[ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="2_fpmr2"]
+[ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/timer_start_trigger.tscn" id="3_0qn28"]
+[ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/shooting_point.tscn" id="5_yqmum"]
+
+[node name="LevelOne" type="Node2D"]
+
+[node name="UI_Game" parent="." instance=ExtResource("1_yqu0t")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-144, 0)
+tile_set = ExtResource("1_e65on")
+format = 2
+layer_0/tile_data = PackedInt32Array(-131072, 983040, 24, -65536, 983040, 25, 0, 983040, 25, 65536, 983040, 26, -131071, 1048576, 24, -65535, 1048576, 25, 1, 1048576, 1, 65537, 1048576, 26, -65534, 1048576, 25, 2, 1048576, 25, -131069, 1114112, 24, -65533, 1835008, 25, 3, 1835008, 26, 65539, 1114112, 26, -65532, 65536, 24, 4, 65536, 26, -131067, 0, 24, -65531, 786432, 25, 5, 786432, 26, 65541, 0, 26, -131066, 65536, 24, -65530, 65536, 25, 6, 65536, 1, 65542, 65536, 26, -131065, 65536, 24, -65529, 65536, 1, 7, 65536, 25, 65543, 65536, 26, -131064, 65536, 24, -65528, 65536, 1, 8, 65536, 13, 65544, 65536, 26, -131063, 65536, 24, -65527, 65536, 25, 9, 65536, 1, 65545, 65536, 26, -131062, 65536, 24, -65526, 65536, 25, 10, 65536, 25, 65546, 65536, 26, -65525, 65536, 1, 11, 65536, 25, -131060, 131072, 24, -65524, 851968, 25, 12, 851968, 26, 65548, 131072, 26, -65523, 65536, 24, 13, 65536, 26, -131058, 983040, 24, -65522, 1769472, 25, 14, 1769472, 26, 65550, 983040, 26, -131057, 1048576, 24, -65521, 1048576, 25, 15, 1048576, 25, 65551, 1048576, 26, -131070, 1048576, 24, 65538, 1048576, 26, -131061, 65536, 24, 65547, 65536, 26, -131056, 1048576, 24, -65520, 1048576, 25, 16, 1048576, 25, 65552, 1048576, 26, -131055, 1114112, 24, -65519, 1114112, 25, 17, 1114112, 25, 65553, 1114112, 26, 131072, 983040, 27, 131073, 1048576, 27, 131074, 1048576, 27, 131075, 1835008, 28, 65540, 917504, 27, 131086, 1769472, 28, 131088, 1048576, 27, 131089, 1114112, 27, 131087, 1703936, 27, 65549, 786432, 28)
+
+[node name="PlayerMovement" parent="." instance=ExtResource("2_fpmr2")]
+position = Vector2(-112, 0)
+
+[node name="TimerStartTrigger" parent="." instance=ExtResource("3_0qn28")]
+position = Vector2(-112, 0)
+activation_type = 0
+trigger_type = 0
+
+[node name="ShootingPoint" parent="." instance=ExtResource("5_yqmum")]
+position = Vector2(-40, -24)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(0, 1)
+_bullet_speed = 30.0
+
+[node name="ShootingPoint2" parent="." instance=ExtResource("5_yqmum")]
+position = Vector2(40, -24)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(0, 1)
+_bullet_speed = 30.0
+
+[node name="ShootingPoint3" parent="." instance=ExtResource("5_yqmum")]
+position = Vector2(-16, 24)
+_extra_delay_duration = 0.1
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(0, -1)
+_bullet_speed = 60.0
+
+[node name="ShootingPoint4" parent="." instance=ExtResource("5_yqmum")]
+position = Vector2(16, 24)
+_extra_delay_duration = 0.1
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(0, -1)
+_bullet_speed = 60.0

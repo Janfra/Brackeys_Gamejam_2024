@@ -8,7 +8,7 @@ func _ready():
 	
 
 func _update_displayed_timer(time : float) -> void:
-	text = "%10.1f" % time
+	text = "%.1f" % time
 	
 
 func _disable_display() -> void:
