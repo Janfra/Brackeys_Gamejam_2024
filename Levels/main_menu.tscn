@@ -1,0 +1,179 @@
+[gd_scene load_steps=14 format=3 uid="uid://5po4yd85sn72"]
+
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Assets/UI/chary___.ttf" id="1_aijgs"]
+[ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Assets/UI/pxkw_arrow_down.png" id="2_hmwxj"]
+[ext_resource type="Script" path="res://Levels/StartButton.gd" id="2_wibq3"]
+[ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/level_one_data.tres" id="3_1e3a6"]
+[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Assets/UI/pxkw_arrow_right.png" id="3_qxws5"]
+[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Assets/UI/pxkw_arrow_left.png" id="4_41d0n"]
+[ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Assets/UI/pxkw_arrow_up.png" id="5_tkh8y"]
+[ext_resource type="Texture2D" uid="uid://dpffyjwb1fdja" path="res://Assets/UI/pxkw_w.png" id="6_hif7c"]
+[ext_resource type="Texture2D" uid="uid://cdgtlleqrc1re" path="res://Assets/UI/pxkw_s.png" id="7_dfml7"]
+[ext_resource type="Texture2D" uid="uid://bcoh5ph3yfccf" path="res://Assets/UI/pxkw_a.png" id="8_drxqc"]
+[ext_resource type="Texture2D" uid="uid://du1npw0c2hnh1" path="res://Assets/UI/pxkw_d.png" id="9_jc58k"]
+[ext_resource type="Texture2D" uid="uid://c16jwaxmy74wd" path="res://GameIcon.png" id="12_8jhy8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ae7i5"]
+font = ExtResource("1_aijgs")
+font_size = 50
+outline_size = 1
+outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+shadow_color = Color(0, 0, 0, 0.556863)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.395
+anchor_right = 1.0
+anchor_bottom = 0.395
+grow_horizontal = 2
+grow_vertical = 2
+text = "Safe Space"
+label_settings = SubResource("LabelSettings_ae7i5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_aijgs")
+theme_override_font_sizes/font_size = 27
+text = "Start"
+script = ExtResource("2_wibq3")
+load_level = ExtResource("3_1e3a6")
+
+[node name="ORlabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.691
+anchor_right = 1.0
+anchor_bottom = 0.691
+grow_horizontal = 2
+grow_vertical = 2
+text = "OR"
+label_settings = SubResource("LabelSettings_ae7i5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DownArrowRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.333
+anchor_top = 0.691
+anchor_right = 0.389
+anchor_bottom = 0.79
+grow_vertical = 0
+texture = ExtResource("2_hmwxj")
+
+[node name="RightArrowRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.691
+anchor_right = 0.444
+anchor_bottom = 0.79
+grow_vertical = 0
+texture = ExtResource("3_qxws5")
+
+[node name="LeftArrowRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.278
+anchor_top = 0.691
+anchor_right = 0.333
+anchor_bottom = 0.79
+grow_vertical = 0
+texture = ExtResource("4_41d0n")
+
+[node name="UpArrowRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.333
+anchor_top = 0.593
+anchor_right = 0.389
+anchor_bottom = 0.691
+grow_vertical = 0
+texture = ExtResource("5_tkh8y")
+
+[node name="WKeyRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.611
+anchor_top = 0.691
+anchor_right = 0.667
+anchor_bottom = 0.79
+offset_left = -0.512024
+offset_top = -0.264038
+offset_right = -0.512024
+offset_bottom = -0.264038
+grow_vertical = 0
+texture = ExtResource("6_hif7c")
+
+[node name="SKeyRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.667
+anchor_top = 0.691
+anchor_right = 0.722
+anchor_bottom = 0.79
+offset_left = -0.512085
+offset_top = -0.264038
+offset_right = -0.512146
+offset_bottom = -0.264038
+grow_vertical = 0
+texture = ExtResource("7_dfml7")
+
+[node name="AKeyRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.556
+anchor_top = 0.691
+anchor_right = 0.611
+anchor_bottom = 0.79
+offset_left = -0.512085
+offset_top = -0.264038
+offset_right = -0.512024
+offset_bottom = -0.264038
+grow_vertical = 0
+texture = ExtResource("8_drxqc")
+
+[node name="DKeyRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.611
+anchor_top = 0.593
+anchor_right = 0.667
+anchor_bottom = 0.691
+offset_left = -0.512024
+offset_top = -0.264038
+offset_right = -0.512024
+offset_bottom = -0.264038
+grow_vertical = 0
+texture = ExtResource("9_jc58k")
+
+[node name="IconRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.444
+anchor_top = 0.099
+anchor_right = 0.556
+anchor_bottom = 0.296
+grow_horizontal = 2
+texture = ExtResource("12_8jhy8")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="CanvasLayer/StartButton" to="CanvasLayer/StartButton" method="_on_pressed"]

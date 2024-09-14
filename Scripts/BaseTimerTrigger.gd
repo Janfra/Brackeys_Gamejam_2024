@@ -26,6 +26,8 @@ enum TriggerType
 var activation_type: ActivationType = ActivationType.ON_LOAD
 @export
 var trigger_type: TriggerType = TriggerType.PAUSE_SWITCH
+@export
+var display_message: String = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -95,6 +97,8 @@ func _complete_level() -> void:
 func _switch_pause_state() -> void:
 	var switch_is_paused = !GameTimer.get_is_paused()
 	GameTimer.set_is_timer_paused(switch_is_paused)
+	if switch_is_paused and not display_message.is_empty():
+		GameTimer.display_message_on_timer_ui(display_message)
 	
 
 func _switch_reset_state() -> void:

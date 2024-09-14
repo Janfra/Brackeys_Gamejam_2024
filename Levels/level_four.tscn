@@ -44,6 +44,7 @@ shape = SubResource("RectangleShape2D_ed0ws")
 
 [node name="TimerPauseTrigger" parent="." index="7" instance=ExtResource("4_8kq76")]
 position = Vector2(296, 8)
+display_message = "Not a respawn point"
 
 [node name="BottomStart" type="Node" parent="." index="8"]
 

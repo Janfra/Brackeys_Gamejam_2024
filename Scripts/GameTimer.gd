@@ -6,6 +6,7 @@ signal pause_state_changed(is_paused : bool)
 signal new_record(time : float)
 signal time_updated(time : float)
 signal time_reset
+signal ui_message_used(display : String)
 
 var _is_paused: bool = true
 var _current_time: float = 0.0
@@ -23,6 +24,10 @@ func _process(delta) -> void:
 	
 	_current_time += delta
 	time_updated.emit(_current_time)
+	
+
+func display_message_on_timer_ui(display : String) -> void:
+	ui_message_used.emit(display)
 	
 
 func set_level_record_time(time : float) -> void:

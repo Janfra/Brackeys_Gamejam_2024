@@ -64,3 +64,4 @@ _max_distance = 100.0
 
 [node name="TimerPauseTrigger" parent="." index="11" instance=ExtResource("5_ocn6a")]
 position = Vector2(40, 72)
+display_message = "Timer is paused while you are here!"
