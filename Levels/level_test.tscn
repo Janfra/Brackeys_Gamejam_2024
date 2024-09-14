@@ -38,8 +38,13 @@ _shooting_direction = Vector2(1, 0)
 
 [node name="ShootingPoint3" parent="." instance=ExtResource("3_u4uj3")]
 position = Vector2(70, 10)
-_extra_delay_duration = 4.0
+_is_delayed = false
+_extra_delay_duration = 0.0
+_cancel_shot_every = 3
+_shot_warning_duration = 1.0
 _shooting_direction = Vector2(0, 1)
+_bullet_speed = 200.0
+_max_distance = 10.0
 
 [node name="ShootingPoint4" parent="." instance=ExtResource("3_u4uj3")]
 position = Vector2(0, 58)
@@ -49,11 +54,12 @@ _bullet_speed = 40.0
 
 [node name="ShootingPoint5" parent="." instance=ExtResource("3_u4uj3")]
 position = Vector2(86, 58)
-_shot_warning_duration = 1.0
+_is_delayed = false
+_shot_warning_duration = 0.06
 _shooting_direction = Vector2(-1, 0)
 _bullet_speed = 65.0
 
 [node name="UI_Game" parent="." instance=ExtResource("4_84tfw")]
 
 [node name="TimerStartTrigger" parent="." instance=ExtResource("5_yun55")]
-activation_type = 0
+position = Vector2(78, 26)

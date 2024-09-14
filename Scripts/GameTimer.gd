@@ -25,6 +25,15 @@ func _process(delta) -> void:
 	time_updated.emit(_current_time)
 	
 
+func set_level_record_time(time : float) -> void:
+	_best_time = time
+	
+
+func timer_completed() -> void:
+	_current_time = 0.0
+	set_is_timer_paused(true)
+	
+
 func reset_timer() -> void:
 	_current_time = 0.0
 	set_is_timer_paused(true)
@@ -41,8 +50,8 @@ func set_is_timer_paused(set_is_paused : bool) -> void:
 	
 
 func register_time() -> void:
-	if _current_time < _best_time:
+	if _current_time < _best_time or _best_time == 0:
 		_best_time = _current_time
 		new_record.emit(_best_time)
-	reset_timer()
+	timer_completed()
 	

@@ -1,6 +1,9 @@
 class_name ShootingPoint
 extends Node2D
 
+signal shot
+signal warned_started
+
 @export_category("Depedencies")
 @export
 var _bullet: PackedScene
@@ -20,6 +23,8 @@ var _is_delayed: bool = true
 var _extra_delay_duration: float = 1
 @export
 var _cancel_shot_every: int = -1
+@export
+var _wait_for: ShootingPoint
 
 @export_subgroup("Shooting")
 @export
@@ -30,6 +35,8 @@ var _shooting_direction: Vector2 = Vector2.ZERO
 var _bullet_speed: float = 45.0
 @export
 var _max_distance: float = 1000.0 
+@export 
+var _hide_warning_particles: bool = false
 
 var _queued_bullet: Bullet
 var _generated_bullet_count: int
@@ -89,7 +96,9 @@ func _generate_bullet(delay : float) -> void:
 	
 
 func _display_warning_particles() -> void:
-	_warning_particles.emitting = true
+	if not _hide_warning_particles:
+		_warning_particles.emitting = true
+	warned_started.emit()
 	_set_timeout(_on_delay_completed.bind(), _warning_particles.lifetime)
 	
 
@@ -100,12 +109,16 @@ func _on_delay_completed() -> void:
 
 func _on_warning_completed() -> void:
 	_shoot_bullet()
+	if _wait_for:
+		await _wait_for.shot
 	_delay_setup()
 	
 
 
 func _on_no_delay_warning_completed() -> void:
 	_shoot_bullet()
+	if _wait_for:
+		await _wait_for.shot
 	_no_delay_setup()
 	
 
@@ -115,6 +128,7 @@ func _shoot_bullet() -> void:
 		_queued_bullet.shoot()
 	
 	_queued_bullet = null
+	shot.emit()
 	
 
 func _set_timeout(callable : Callable, duration : float) -> void:

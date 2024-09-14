@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjukh3ks8fp28"]
+[gd_scene load_steps=9 format=3 uid="uid://cjukh3ks8fp28"]
 
 [ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Assets/Tiles/tile_set.tres" id="1_e65on"]
+[ext_resource type="Script" path="res://Scripts/LevelContainer.gd" id="1_iumhb"]
 [ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/ui_game.tscn" id="1_yqu0t"]
+[ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/level_one_data.tres" id="2_b7w7x"]
 [ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="2_fpmr2"]
 [ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/timer_start_trigger.tscn" id="3_0qn28"]
+[ext_resource type="Resource" uid="uid://c6jcr6kqntumd" path="res://Resources/level_two_data.tres" id="3_t1u6l"]
 [ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/shooting_point.tscn" id="5_yqmum"]
 
 [node name="LevelOne" type="Node2D"]
+script = ExtResource("1_iumhb")
+level_data = ExtResource("2_b7w7x")
+next_level_data = ExtResource("3_t1u6l")
 
 [node name="UI_Game" parent="." instance=ExtResource("1_yqu0t")]
 
@@ -52,3 +58,7 @@ _extra_delay_duration = 0.1
 _shot_warning_duration = 1.0
 _shooting_direction = Vector2(0, -1)
 _bullet_speed = 60.0
+
+[node name="TimerEndTrigger" parent="." instance=ExtResource("3_0qn28")]
+position = Vector2(112, 0)
+trigger_type = 2

@@ -40,6 +40,10 @@ func _ready() -> void:
 	_health.died.connect(GameManager.player_has_died.bind())
 	
 
+func get_last_valid_input() -> Vector2:
+	return _last_input_direction
+	
+
 func _disable_movement() -> void:
 	_is_enabled = false
 	

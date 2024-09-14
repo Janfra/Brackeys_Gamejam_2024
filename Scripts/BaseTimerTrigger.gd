@@ -14,7 +14,10 @@ enum TriggerType
 	## Switches between not being paused to resetting the timer/pausing
 	RESET_SWITCH,
 	## Switches between being paused and not being paused
-	PAUSE_SWITCH
+	PAUSE_SWITCH,
+	## Register time and end level
+	LEVEL_COMPLETE,
+	DISABLED
 }
 
 @export_category("Config")
@@ -73,8 +76,20 @@ func _activate_based_on_trigger_type() -> void:
 		TriggerType.PAUSE_SWITCH:
 			_switch_pause_state()
 		
+		TriggerType.LEVEL_COMPLETE:
+			_complete_level()
+		
+		TriggerType.DISABLED:
+			return
+		
 		_:
 			printerr("Trigger type activation is not supported yet: %s" % trigger_type)
+	
+
+func _complete_level() -> void:
+	GameTimer.register_time()
+	GameManager.level_has_been_completed()
+	trigger_type = TriggerType.DISABLED
 	
 
 func _switch_pause_state() -> void:

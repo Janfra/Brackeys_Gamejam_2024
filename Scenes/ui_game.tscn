@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm40fldw7onu3"]
+[gd_scene load_steps=4 format=3 uid="uid://bm40fldw7onu3"]
 
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Assets/UI/chary___.ttf" id="1_dgrak"]
 [ext_resource type="Script" path="res://Scripts/TimerUI.gd" id="1_tudvx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k2p6u"]
+line_spacing = 2.0
+font = ExtResource("1_dgrak")
+font_size = 31
+outline_size = 1
+outline_color = Color(0.194349, 0.194349, 0.194349, 1)
+shadow_color = Color(0, 0, 0, 0.47451)
 
 [node name="UI_Game" type="Control"]
 layout_mode = 3
@@ -21,9 +30,9 @@ anchor_bottom = 0.015
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
-theme_override_font_sizes/font_size = 30
 text = "You will be timed,
 come back to the start to reset the timer"
+label_settings = SubResource("LabelSettings_k2p6u")
 horizontal_alignment = 1
 clip_text = true
 script = ExtResource("1_tudvx")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqkix1hbemlg2"]
+[gd_scene load_steps=6 format=3 uid="uid://dqkix1hbemlg2"]
 
 [ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/ui_game.tscn" id="1_lk1w2"]
 [ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Assets/Tiles/tile_set.tres" id="2_nmydw"]
 [ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="3_5frhg"]
 [ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/timer_start_trigger.tscn" id="4_bkhjy"]
+[ext_resource type="Script" path="res://Scripts/LevelContainer.gd" id="5_n6p4l"]
 
 [node name="LevelKit" type="Node2D"]
+script = ExtResource("5_n6p4l")
 
 [node name="UI_Game" parent="." instance=ExtResource("1_lk1w2")]
 
@@ -25,3 +27,7 @@ position = Vector2(-112, 0)
 position = Vector2(-112, 0)
 activation_type = 0
 trigger_type = 0
+
+[node name="TimerEndTrigger" parent="." instance=ExtResource("4_bkhjy")]
+position = Vector2(112, 2)
+trigger_type = 2

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://c6jcr6kqntumd"]
+
+[ext_resource type="Script" path="res://Scripts/LevelData.gd" id="1_lj3al"]
+
+[resource]
+script = ExtResource("1_lj3al")
+level = "res://Levels/level_two.tscn"
+record_time = 0.0
+has_been_completed = false

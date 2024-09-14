@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/BaseTimerTrigger.gd" id="1_4ckbr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uaui5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uw11"]
 size = Vector2(64, 64)
 
 [node name="TimerStartTrigger" type="Area2D"]
@@ -12,4 +12,4 @@ collision_mask = 2
 script = ExtResource("1_4ckbr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_uaui5")
+shape = SubResource("RectangleShape2D_5uw11")
