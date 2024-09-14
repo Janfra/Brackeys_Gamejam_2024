@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=3 uid="uid://bafbc1ty0dhdk"]
+
+[ext_resource type="PackedScene" uid="uid://dqkix1hbemlg2" path="res://Levels/level_kit.tscn" id="1_6lch0"]
+[ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/level_one_data.tres" id="2_4yh2h"]
+[ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/shooting_point.tscn" id="2_ud40l"]
+[ext_resource type="Resource" uid="uid://27hw6jwmeop8" path="res://Resources/level_five_data.tres" id="2_v57d3"]
+[ext_resource type="Resource" uid="uid://xaih8ub10hwu" path="res://Resources/level_four_data.tres" id="4_y20mw"]
+[ext_resource type="PackedScene" uid="uid://c1j8aaoltgoux" path="res://Scenes/camera_move_trigger.tscn" id="5_c2hme"]
+[ext_resource type="PackedScene" uid="uid://bp3ny6bqm2be1" path="res://Scenes/death_trigger.tscn" id="6_c21oq"]
+[ext_resource type="PackedScene" uid="uid://d0w6vv4auota2" path="res://Scenes/timer_pause_trigger.tscn" id="7_n2eag"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6a0tt"]
+size = Vector2(32, 16)
+
+[node name="LevelFive" instance=ExtResource("1_6lch0")]
+level_data = ExtResource("2_v57d3")
+next_level_data = ExtResource("2_4yh2h")
+
+[node name="BackLevel" parent="UI_Game/CanvasLayer" index="1"]
+load_level = ExtResource("4_y20mw")
+
+[node name="NextLevel" parent="UI_Game/CanvasLayer" index="2"]
+load_level = ExtResource("2_4yh2h")
+
+[node name="TileMap" parent="." index="2"]
+layer_0/tile_data = PackedInt32Array(-131072, 983040, 24, -65536, 983040, 25, 0, 983040, 25, 65536, 983040, 26, -131071, 1048576, 24, -65535, 1048576, 25, 1, 1048576, 1, 65537, 1048576, 26, -65534, 1048576, 25, 2, 1048576, 25, -131069, 1114112, 24, -65533, 1835008, 25, 3, 1835008, 26, 65539, 1114112, 26, -65532, 65536, 24, 4, 65536, 26, -65523, 65536, 24, 13, 65536, 26, -65522, 65536, 24, 14, 65536, 26, 65550, 262144, 27, -131057, 0, 24, -65521, 65536, 25, 15, 65536, 26, 65551, 262144, 27, -131070, 1048576, 24, 65538, 1048576, 26, -131056, 196608, 4, -65520, 196608, 5, 16, 196608, 6, 65552, 262144, 27, -65519, 65536, 24, 17, 65536, 26, 65553, 262144, 27, 131072, 983040, 27, 131073, 1048576, 27, 131074, 1048576, 27, 131075, 1835008, 28, 65540, 196608, 27, 65549, 262144, 27, -65531, 65536, 24, -65530, 65536, 24, -65529, 65536, 24, -65528, 65536, 24, -65527, 65536, 24, -65526, 65536, 24, -65525, 65536, 24, -65524, 65536, 24, -65518, 65536, 24, -65517, 65536, 24, -65516, 65536, 24, -65515, 65536, 24, -65514, 65536, 24, -65513, 65536, 24, -65512, 65536, 24, -65511, 65536, 24, -65510, 196608, 4, -65509, 65536, 24, -65508, 65536, 24, -65507, 65536, 24, -65506, 65536, 24, -65505, 65536, 24, -65504, 65536, 24, -65503, 65536, 24, -65502, 65536, 24, -65501, 65536, 24, 35, 65536, 26, 34, 65536, 26, 33, 65536, 26, 32, 65536, 26, 31, 65536, 26, 30, 65536, 26, 29, 65536, 26, 28, 65536, 26, 27, 65536, 25, 26, 196608, 6, 25, 65536, 26, 24, 65536, 26, 23, 65536, 26, 22, 65536, 26, 21, 65536, 26, 20, 65536, 26, 19, 65536, 26, 18, 65536, 26, 12, 65536, 26, 11, 65536, 26, 10, 65536, 26, 9, 65536, 26, 8, 65536, 26, 7, 65536, 26, 6, 65536, 26, 5, 65536, 26, 65541, 262144, 27, 65542, 262144, 27, 65543, 262144, 27, 65544, 262144, 27, 65545, 262144, 27, 65546, 262144, 27, 65547, 262144, 27, 65548, 262144, 27, 65554, 262144, 27, 65555, 262144, 27, 65558, 262144, 27, 65559, 262144, 27, 65560, 262144, 27, 65561, 262144, 27, 65562, 3801088, 29, 65563, 3932160, 29, 65564, 262144, 27, 65565, 262144, 27, 65566, 262144, 27, 65567, 262144, 27, 65568, 262144, 27, 65569, 262144, 27, 65570, 262144, 27, 65571, 262144, 27, 65573, 983040, 26, -65496, 1114112, 25, 40, 1114112, 25, 65576, 1114112, 26, -65500, 65536, 24, 36, 65536, 26, 65572, 327680, 27, -131035, 983040, 24, -65499, 1769472, 25, 37, 1769472, 26, 131109, 1769472, 28, -131034, 1048576, 24, -65498, 1048576, 25, 38, 1048576, 25, 65574, 1048576, 26, 131110, 1703936, 27, -131033, 1048576, 24, -65497, 1048576, 25, 39, 1048576, 25, 65575, 1048576, 26, 131111, 1048576, 27, -131032, 1114112, 24, 131112, 1114112, 27, 65556, 262144, 27, 65557, 262144, 27)
+layer_1/z_index = -1
+layer_1/tile_data = PackedInt32Array(65562, 0, 26, 65563, 131072, 26, 16, 65536, 26, -131056, 131072, 24, -65510, 65536, 24)
+
+[node name="TimerEndTrigger" parent="." index="5"]
+position = Vector2(480, 2)
+
+[node name="CameraMove" type="Node" parent="." index="6"]
+
+[node name="CameraMoveTrigger" parent="CameraMove" index="0" node_paths=PackedStringArray("_camera") instance=ExtResource("5_c2hme")]
+position = Vector2(120, 0)
+_camera = NodePath("../../Camera2D")
+new_position = Vector2(264, 0)
+
+[node name="CameraMoveTrigger2" parent="CameraMove" index="1" node_paths=PackedStringArray("_camera") instance=ExtResource("5_c2hme")]
+position = Vector2(280, 0)
+_camera = NodePath("../../Camera2D")
+new_position = Vector2(360, 0)
+
+[node name="StartLine" type="Node" parent="." index="7"]
+
+[node name="ShootingPoint" parent="StartLine" index="0" instance=ExtResource("2_ud40l")]
+position = Vector2(0, -8)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_bullet_speed = 20.0
+_max_distance = 430.0
+
+[node name="ShootingPoint2" parent="StartLine" index="1" instance=ExtResource("2_ud40l")]
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_bullet_speed = 20.0
+_max_distance = 430.0
+
+[node name="ShootingPoint3" parent="StartLine" index="2" instance=ExtResource("2_ud40l")]
+position = Vector2(0, 8)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_bullet_speed = 20.0
+_max_distance = 430.0
+
+[node name="StaticDeathRunMiddle" type="Node" parent="." index="8"]
+
+[node name="DeathTrigger" parent="StaticDeathRunMiddle" index="0" instance=ExtResource("6_c21oq")]
+position = Vector2(48, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger2" parent="StaticDeathRunMiddle" index="1" instance=ExtResource("6_c21oq")]
+position = Vector2(72, -8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger3" parent="StaticDeathRunMiddle" index="2" instance=ExtResource("6_c21oq")]
+position = Vector2(48, 8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger4" parent="StaticDeathRunMiddle" index="3" instance=ExtResource("6_c21oq")]
+position = Vector2(72, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger5" parent="StaticDeathRunMiddle" index="4" instance=ExtResource("6_c21oq")]
+position = Vector2(96, 10)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger6" parent="StaticDeathRunMiddle" index="5" instance=ExtResource("6_c21oq")]
+position = Vector2(96, -10)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger7" parent="StaticDeathRunMiddle" index="6" instance=ExtResource("6_c21oq")]
+position = Vector2(112, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger8" parent="StaticDeathRunMiddle" index="7" instance=ExtResource("6_c21oq")]
+position = Vector2(136, -8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger9" parent="StaticDeathRunMiddle" index="8" instance=ExtResource("6_c21oq")]
+position = Vector2(144, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger10" parent="StaticDeathRunMiddle" index="9" instance=ExtResource("6_c21oq")]
+position = Vector2(162, 8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger11" parent="StaticDeathRunMiddle" index="10" instance=ExtResource("6_c21oq")]
+position = Vector2(168, 0)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger12" parent="StaticDeathRunMiddle" index="11" instance=ExtResource("6_c21oq")]
+position = Vector2(192, -8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger13" parent="StaticDeathRunMiddle" index="12" instance=ExtResource("6_c21oq")]
+position = Vector2(208, 8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger14" parent="StaticDeathRunMiddle" index="13" instance=ExtResource("6_c21oq")]
+position = Vector2(224, -8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger15" parent="StaticDeathRunMiddle" index="14" instance=ExtResource("6_c21oq")]
+position = Vector2(240, 8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger16" parent="StaticDeathRunMiddle" index="15" instance=ExtResource("6_c21oq")]
+position = Vector2(264, -8)
+scale = Vector2(0.25, 0.25)
+
+[node name="DeathTrigger17" parent="StaticDeathRunMiddle" index="16" instance=ExtResource("6_c21oq")]
+position = Vector2(264, 10)
+scale = Vector2(0.25, 0.25)
+
+[node name="InvisibleRunMiddle" type="Node" parent="." index="9"]
+
+[node name="ShootingPoint" parent="InvisibleRunMiddle" index="0" instance=ExtResource("2_ud40l")]
+position = Vector2(312, -8)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_max_distance = 0.0
+
+[node name="ShootingPoint2" parent="InvisibleRunMiddle" index="1" instance=ExtResource("2_ud40l")]
+position = Vector2(312, 0)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_max_distance = 0.0
+
+[node name="ShootingPoint3" parent="InvisibleRunMiddle" index="2" instance=ExtResource("2_ud40l")]
+position = Vector2(312, 8)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_max_distance = 0.0
+
+[node name="ShootingPoint4" parent="InvisibleRunMiddle" index="3" instance=ExtResource("2_ud40l")]
+position = Vector2(344, 0)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_max_distance = 0.0
+
+[node name="ShootingPoint5" parent="InvisibleRunMiddle" index="4" instance=ExtResource("2_ud40l")]
+position = Vector2(360, 8)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_max_distance = 0.0
+
+[node name="ShootingPoint6" parent="InvisibleRunMiddle" index="5" instance=ExtResource("2_ud40l")]
+position = Vector2(384, 0)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_max_distance = 0.0
+
+[node name="ShootingPoint7" parent="InvisibleRunMiddle" index="6" instance=ExtResource("2_ud40l")]
+position = Vector2(392, -8)
+_shot_warning_duration = 1.0
+_shooting_direction = Vector2(1, 0)
+_max_distance = 0.0
+
+[node name="TimerPauseTrigger" parent="." index="10" instance=ExtResource("7_n2eag")]
+position = Vector2(280, 24)
+display_message = "Have a calm moment before storming out"
+
+[node name="CollisionShape2D" parent="TimerPauseTrigger" index="0"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_6a0tt")
+
+[editable path="UI_Game"]
+[editable path="TimerPauseTrigger"]

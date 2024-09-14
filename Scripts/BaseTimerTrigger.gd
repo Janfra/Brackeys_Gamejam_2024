@@ -32,6 +32,14 @@ var display_message: String = ""
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_setup_selected_trigger_type()
+	GameManager.level_skipped.connect(disable_trigger.bind())
+	
+
+func disable_trigger() -> void:
+	trigger_type = TriggerType.DISABLED
+	if body_exited.is_connected(_first_exit.bind()):
+		body_exited.disconnect(_first_exit.bind())
+	
 	
 
 func _setup_selected_trigger_type() -> void:
@@ -91,7 +99,7 @@ func _activate_based_on_trigger_type() -> void:
 func _complete_level() -> void:
 	GameTimer.register_time()
 	GameManager.level_has_been_completed()
-	trigger_type = TriggerType.DISABLED
+	disable_trigger()
 	
 
 func _switch_pause_state() -> void:

@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://5po4yd85sn72"]
+[gd_scene load_steps=16 format=3 uid="uid://5po4yd85sn72"]
 
 [ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Assets/UI/chary___.ttf" id="1_aijgs"]
 [ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Assets/UI/pxkw_arrow_down.png" id="2_hmwxj"]
-[ext_resource type="Script" path="res://Levels/StartButton.gd" id="2_wibq3"]
+[ext_resource type="Script" path="res://Scripts/StartButton.gd" id="2_wibq3"]
 [ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/level_one_data.tres" id="3_1e3a6"]
 [ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Assets/UI/pxkw_arrow_right.png" id="3_qxws5"]
 [ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Assets/UI/pxkw_arrow_left.png" id="4_41d0n"]
@@ -12,10 +12,18 @@
 [ext_resource type="Texture2D" uid="uid://bcoh5ph3yfccf" path="res://Assets/UI/pxkw_a.png" id="8_drxqc"]
 [ext_resource type="Texture2D" uid="uid://du1npw0c2hnh1" path="res://Assets/UI/pxkw_d.png" id="9_jc58k"]
 [ext_resource type="Texture2D" uid="uid://c16jwaxmy74wd" path="res://GameIcon.png" id="12_8jhy8"]
+[ext_resource type="Script" path="res://Scripts/ChangeLevelButton.gd" id="13_2w8ua"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dntld"]
+font = ExtResource("1_aijgs")
+font_size = 50
+outline_size = 1
+outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+shadow_color = Color(0, 0, 0, 0.556863)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ae7i5"]
 font = ExtResource("1_aijgs")
-font_size = 50
+font_size = 20
 outline_size = 1
 outline_color = Color(0.111197, 0.111197, 0.111197, 1)
 shadow_color = Color(0, 0, 0, 0.556863)
@@ -38,7 +46,7 @@ anchor_bottom = 0.395
 grow_horizontal = 2
 grow_vertical = 2
 text = "Safe Space"
-label_settings = SubResource("LabelSettings_ae7i5")
+label_settings = SubResource("LabelSettings_dntld")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -166,6 +174,54 @@ anchor_bottom = 0.296
 grow_horizontal = 2
 texture = ExtResource("12_8jhy8")
 
+[node name="BackLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.012
+anchor_right = 0.218
+anchor_bottom = 0.037
+offset_right = -123.264
+grow_vertical = 2
+text = "Go back one level button"
+label_settings = SubResource("LabelSettings_ae7i5")
+
+[node name="BackLevel" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.027
+anchor_bottom = 0.049
+grow_horizontal = 2
+grow_vertical = 2
+disabled = true
+script = ExtResource("13_2w8ua")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_41d0n")
+
+[node name="NextLevel" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.972
+anchor_right = 1.0
+anchor_bottom = 0.049
+grow_horizontal = 0
+disabled = true
+script = ExtResource("13_2w8ua")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NextLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qxws5")
+
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 z_index = -1
 anchors_preset = 15
@@ -176,4 +232,18 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="SkipLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.833
+anchor_top = 0.012
+anchor_right = 0.965
+anchor_bottom = 0.042
+offset_bottom = -0.648001
+grow_vertical = 2
+text = "Skip level button"
+label_settings = SubResource("LabelSettings_ae7i5")
+horizontal_alignment = 2
+
 [connection signal="pressed" from="CanvasLayer/StartButton" to="CanvasLayer/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/BackLevel" to="CanvasLayer/BackLevel" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/NextLevel" to="CanvasLayer/NextLevel" method="_on_pressed"]

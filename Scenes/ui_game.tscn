@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm40fldw7onu3"]
+[gd_scene load_steps=7 format=3 uid="uid://bm40fldw7onu3"]
 
 [ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Assets/UI/chary___.ttf" id="1_dgrak"]
 [ext_resource type="Script" path="res://Scripts/TimerUI.gd" id="1_tudvx"]
+[ext_resource type="Script" path="res://Scripts/ChangeLevelButton.gd" id="3_2m3u2"]
+[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Assets/UI/pxkw_arrow_left.png" id="3_c8a3q"]
+[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Assets/UI/pxkw_arrow_right.png" id="4_cralk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k2p6u"]
 line_spacing = 2.0
@@ -27,6 +30,10 @@ anchors_preset = -1
 anchor_top = 0.015
 anchor_right = 1.0
 anchor_bottom = 0.015
+offset_left = -48.0
+offset_top = 14.28
+offset_right = -48.0
+offset_bottom = 114.28
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
@@ -36,3 +43,41 @@ label_settings = SubResource("LabelSettings_k2p6u")
 horizontal_alignment = 1
 clip_text = true
 script = ExtResource("1_tudvx")
+
+[node name="BackLevel" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.027
+anchor_bottom = 0.049
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_2m3u2")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_c8a3q")
+
+[node name="NextLevel" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.972
+anchor_right = 1.0
+anchor_bottom = 0.049
+grow_horizontal = 0
+script = ExtResource("3_2m3u2")
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/NextLevel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_cralk")
+
+[connection signal="pressed" from="CanvasLayer/BackLevel" to="CanvasLayer/BackLevel" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/NextLevel" to="CanvasLayer/NextLevel" method="_on_pressed"]

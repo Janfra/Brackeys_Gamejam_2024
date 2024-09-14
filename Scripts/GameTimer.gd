@@ -15,6 +15,7 @@ var _best_time: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	GameManager.player_losed.connect(reset_timer.bind())
+	GameManager.loading_next_level.connect(timer_completed.bind())
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -6,6 +6,7 @@ signal player_losed
 signal player_died
 signal level_completed
 signal loading_next_level(level_data : LevelData)
+signal level_skipped
 
 const SCENE_TRANSITION_SCENE = preload("res://Scenes/scene_transition.tscn")
 const TRANSITION_ANIMATION = "fade_in"
@@ -42,6 +43,11 @@ func load_next_level(data : LevelData) -> void:
 	_current_level = data
 	loading_next_level.emit(data)
 	_load_level_from_path(data.level)
+	
+
+func level_skip(data : LevelData) -> void:
+	level_skipped.emit()
+	load_next_level(data)
 	
 
 func level_has_been_completed() -> void:
