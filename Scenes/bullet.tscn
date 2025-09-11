@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://dv0yfjruswxj4"]
 
-[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_5ymol"]
-[ext_resource type="Texture2D" uid="uid://ci20jleplykvg" path="res://Assets/VFXs/white_square.png" id="2_ku54t"]
+[ext_resource type="Script" uid="uid://cl0xqu0g00oht" path="res://Scripts/Bullet.gd" id="1_5ymol"]
+[ext_resource type="Texture2D" uid="uid://ci20jleplykvg" path="res://Visuals/VFXs/white_square.png" id="2_ku54t"]
 [ext_resource type="Shader" uid="uid://d1cvais836kr6" path="res://Shaders/bullet.tres" id="2_vcbbi"]
 
 [sub_resource type="Curve" id="Curve_65byv"]
@@ -92,8 +92,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kes6e"]
 _data = {
-"RESET": SubResource("Animation_wwfpe"),
-"appear": SubResource("Animation_lcivw")
+&"RESET": SubResource("Animation_wwfpe"),
+&"appear": SubResource("Animation_lcivw")
 }
 
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("_trail_particles", "_explosion_particles", "_sprite", "_animation_player", "_collision_shape")]

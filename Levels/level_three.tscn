@@ -35,6 +35,7 @@ _is_delayed = false
 _shot_warning_duration = 1.0
 _shooting_direction = Vector2(1, 0)
 _bullet_speed = 85.0
+_bullet_size = 2.0
 _max_distance = 180.0
 
 [node name="ShootingPoint2" parent="." index="7" instance=ExtResource("3_j4pfm")]
@@ -44,6 +45,7 @@ _extra_delay_duration = 2.0
 _shot_warning_duration = 1.2
 _shooting_direction = Vector2(1, 0)
 _bullet_speed = 85.0
+_bullet_size = 1.75
 _max_distance = 180.0
 
 [node name="ShootingPoint3" parent="." index="8" instance=ExtResource("3_j4pfm")]

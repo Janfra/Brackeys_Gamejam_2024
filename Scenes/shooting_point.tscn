@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c2kdkfjcr3ucc"]
 
-[ext_resource type="Script" path="res://Scripts/ShootingPoint.gd" id="1_0vya2"]
+[ext_resource type="Script" uid="uid://cd3sa1goatyt2" path="res://Scripts/ShootingPoint.gd" id="1_0vya2"]
 [ext_resource type="PackedScene" uid="uid://dv0yfjruswxj4" path="res://Scenes/bullet.tscn" id="2_de3tu"]
 
 [sub_resource type="Curve" id="Curve_i2804"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du1npw0c2hnh1"
-path="res://.godot/imported/pxkw_d.png-8929a7fc8b5d9f2a2129c4bbc50e65c7.ctex"
+uid="uid://ci20jleplykvg"
+path="res://.godot/imported/white_square.png-17a50a90900e3e791a905e363cc1dd23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/pxkw_d.png"
-dest_files=["res://.godot/imported/pxkw_d.png-8929a7fc8b5d9f2a2129c4bbc50e65c7.ctex"]
+source_file="res://Visuals/VFXs/white_square.png"
+dest_files=["res://.godot/imported/white_square.png-17a50a90900e3e791a905e363cc1dd23.ctex"]
 
 [params]
 
@@ -25,10 +25,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=16
 detect_3d/compress_to=1

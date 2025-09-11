@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bm40fldw7onu3"]
+[gd_scene load_steps=9 format=3 uid="uid://bm40fldw7onu3"]
 
-[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Assets/UI/chary___.ttf" id="1_dgrak"]
-[ext_resource type="Script" path="res://Scripts/TimerUI.gd" id="1_tudvx"]
-[ext_resource type="Script" path="res://Scripts/ChangeLevelButton.gd" id="3_2m3u2"]
-[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Assets/UI/pxkw_arrow_left.png" id="3_c8a3q"]
-[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Assets/UI/pxkw_arrow_right.png" id="4_cralk"]
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_dgrak"]
+[ext_resource type="Script" uid="uid://dg1r37csgebmc" path="res://Scripts/TimerUI.gd" id="1_tudvx"]
+[ext_resource type="Script" uid="uid://dcoeswpqvylev" path="res://Scripts/ChangeLevelButton.gd" id="3_2m3u2"]
+[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="3_c8a3q"]
+[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Visuals/UI/pxkw_arrow_right.png" id="4_cralk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_k2p6u"]
 line_spacing = 2.0
@@ -13,6 +13,10 @@ font_size = 31
 outline_size = 1
 outline_color = Color(0.194349, 0.194349, 0.194349, 1)
 shadow_color = Color(0, 0, 0, 0.47451)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tdhr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fmrx5"]
 
 [node name="UI_Game" type="Control"]
 layout_mode = 3
@@ -30,9 +34,7 @@ anchors_preset = -1
 anchor_top = 0.015
 anchor_right = 1.0
 anchor_bottom = 0.015
-offset_left = -48.0
 offset_top = 14.28
-offset_right = -48.0
 offset_bottom = 114.28
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -50,6 +52,7 @@ anchor_right = 0.027
 anchor_bottom = 0.049
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1tdhr")
 script = ExtResource("3_2m3u2")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackLevel"]
@@ -68,6 +71,7 @@ anchor_left = 0.972
 anchor_right = 1.0
 anchor_bottom = 0.049
 grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fmrx5")
 script = ExtResource("3_2m3u2")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/NextLevel"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bp3ny6bqm2be1"]
 
-[ext_resource type="Script" path="res://Scripts/death_trigger.gd" id="1_h2lg6"]
-[ext_resource type="Texture2D" uid="uid://ci20jleplykvg" path="res://Assets/VFXs/white_square.png" id="2_wrh87"]
+[ext_resource type="Script" uid="uid://1o1xam5ycf22" path="res://Scripts/DeathTrigger.gd" id="1_h2lg6"]
+[ext_resource type="Texture2D" uid="uid://ci20jleplykvg" path="res://Visuals/VFXs/white_square.png" id="2_wrh87"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckj28"]
 size = Vector2(16, 16)

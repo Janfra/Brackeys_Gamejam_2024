@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdgtlleqrc1re"
-path="res://.godot/imported/pxkw_s.png-d086ef6fbacfb253b3a6c069ae632661.ctex"
+uid="uid://dvam4ejmbv6b"
+path="res://.godot/imported/pointer_i.png-7bc45282247646214864db575929429b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/pxkw_s.png"
-dest_files=["res://.godot/imported/pxkw_s.png-d086ef6fbacfb253b3a6c069ae632661.ctex"]
+source_file="res://Visuals/UI/pointer_i.png"
+dest_files=["res://.godot/imported/pointer_i.png-7bc45282247646214864db575929429b.ctex"]
 
 [params]
 

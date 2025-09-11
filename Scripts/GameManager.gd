@@ -1,6 +1,6 @@
 extends Node
 
-## Autload to handle game states
+## Autoload to handle game states
 
 signal player_losed
 signal player_died

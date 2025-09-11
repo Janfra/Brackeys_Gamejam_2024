@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ney3eivxw0tt"
-path="res://.godot/imported/pxkw_arrow_left.png-ebfe28c1f0d8135c6b8dbefb88b92628.ctex"
+uid="uid://lhscs2nb8qbm"
+path="res://.godot/imported/walk.png-424583d9a566426c0bbb82ae93083050.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/pxkw_arrow_left.png"
-dest_files=["res://.godot/imported/pxkw_arrow_left.png-ebfe28c1f0d8135c6b8dbefb88b92628.ctex"]
+source_file="res://Visuals/Characters/walk.png"
+dest_files=["res://.godot/imported/walk.png-424583d9a566426c0bbb82ae93083050.ctex"]
 
 [params]
 

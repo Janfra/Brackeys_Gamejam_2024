@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beaph4xdx0cox"
-path="res://.godot/imported/pxkw_arrow_right.png-42d1a4c11351733b9870b11568dcb57f.ctex"
+uid="uid://c887peyenpg8k"
+path="res://.godot/imported/pxkw_arrow_down.png-feef019388b1e0efd15d92138357bc41.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/pxkw_arrow_right.png"
-dest_files=["res://.godot/imported/pxkw_arrow_right.png-42d1a4c11351733b9870b11568dcb57f.ctex"]
+source_file="res://Visuals/UI/pxkw_arrow_down.png"
+dest_files=["res://.godot/imported/pxkw_arrow_down.png-feef019388b1e0efd15d92138357bc41.ctex"]
 
 [params]
 

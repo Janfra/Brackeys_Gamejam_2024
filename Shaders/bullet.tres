@@ -34,9 +34,9 @@ render_mode blend_mix;
 
 
 // Varyings
-varying float opacity_extend;
+varying float var_opacity_extend;
 
-uniform float OpacityExtent : hint_range(0, 10) = 10;
+uniform float OpacityExtent : hint_range(0.0, 10.0) = 10.0;
 
 
 
@@ -77,9 +77,10 @@ void fragment() {
 	COLOR.a = n_out10p0;
 
 
-	opacity_extend = 0.0;
+	var_opacity_extend = 0.0;
 }
 "
+graph_offset = Vector2(-251.519, 62.4851)
 mode = 1
 flags/light_only = false
 varyings/opacity_extend = "1,0"
@@ -95,7 +96,7 @@ nodes/fragment/5/position = Vector2(-320, 220)
 nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_226yr")
 nodes/fragment/7/position = Vector2(20, 240)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_n2lkp")
-nodes/fragment/9/position = Vector2(-420, 400)
+nodes/fragment/9/position = Vector2(-400, 420)
 nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_dnirh")
 nodes/fragment/10/position = Vector2(520, 240)
 nodes/fragment/11/node = SubResource("VisualShaderNodeFloatConstant_t04ai")

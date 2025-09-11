@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs5vp3f3p5o4w"
-path="res://.godot/imported/death.png-3c95c25e81d90711aef6a5d1cd60db59.ctex"
+uid="uid://dfwgtap2cej5c"
+path="res://.godot/imported/run.png-5310481922edff3ff9a9bb7d2b03898c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/death.png"
-dest_files=["res://.godot/imported/death.png-3c95c25e81d90711aef6a5d1cd60db59.ctex"]
+source_file="res://Visuals/Characters/run.png"
+dest_files=["res://.godot/imported/run.png-5310481922edff3ff9a9bb7d2b03898c.ctex"]
 
 [params]
 

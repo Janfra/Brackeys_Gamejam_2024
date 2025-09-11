@@ -34,6 +34,8 @@ var _shooting_direction: Vector2 = Vector2.ZERO
 @export
 var _bullet_speed: float = 45.0
 @export
+var _bullet_size: float = 1.0
+@export
 var _max_distance: float = 1000.0 
 @export 
 var _hide_warning_particles: bool = false
@@ -78,6 +80,7 @@ func _generate_bullet(delay : float) -> void:
 	assert(bullet_instance)
 	add_child(bullet_instance)
 	bullet_instance.global_position = self.position
+	bullet_instance.scale = Vector2.ONE * abs(_bullet_size)
 	
 	var bullet_config: Bullet.BulletData = Bullet.BulletData.new()
 	bullet_config.direction = _shooting_direction

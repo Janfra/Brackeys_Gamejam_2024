@@ -1,18 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://5po4yd85sn72"]
+[gd_scene load_steps=18 format=3 uid="uid://5po4yd85sn72"]
 
-[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Assets/UI/chary___.ttf" id="1_aijgs"]
-[ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Assets/UI/pxkw_arrow_down.png" id="2_hmwxj"]
-[ext_resource type="Script" path="res://Scripts/StartButton.gd" id="2_wibq3"]
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_aijgs"]
+[ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Visuals/UI/pxkw_arrow_down.png" id="2_hmwxj"]
+[ext_resource type="Script" uid="uid://du15epirooo00" path="res://Scripts/StartButton.gd" id="2_wibq3"]
 [ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/level_one_data.tres" id="3_1e3a6"]
-[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Assets/UI/pxkw_arrow_right.png" id="3_qxws5"]
-[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Assets/UI/pxkw_arrow_left.png" id="4_41d0n"]
-[ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Assets/UI/pxkw_arrow_up.png" id="5_tkh8y"]
-[ext_resource type="Texture2D" uid="uid://dpffyjwb1fdja" path="res://Assets/UI/pxkw_w.png" id="6_hif7c"]
-[ext_resource type="Texture2D" uid="uid://cdgtlleqrc1re" path="res://Assets/UI/pxkw_s.png" id="7_dfml7"]
-[ext_resource type="Texture2D" uid="uid://bcoh5ph3yfccf" path="res://Assets/UI/pxkw_a.png" id="8_drxqc"]
-[ext_resource type="Texture2D" uid="uid://du1npw0c2hnh1" path="res://Assets/UI/pxkw_d.png" id="9_jc58k"]
+[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Visuals/UI/pxkw_arrow_right.png" id="3_qxws5"]
+[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="4_41d0n"]
+[ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Visuals/UI/pxkw_arrow_up.png" id="5_tkh8y"]
+[ext_resource type="Texture2D" uid="uid://dpffyjwb1fdja" path="res://Visuals/UI/pxkw_w.png" id="6_hif7c"]
+[ext_resource type="Texture2D" uid="uid://cdgtlleqrc1re" path="res://Visuals/UI/pxkw_s.png" id="7_dfml7"]
+[ext_resource type="Texture2D" uid="uid://bcoh5ph3yfccf" path="res://Visuals/UI/pxkw_a.png" id="8_drxqc"]
+[ext_resource type="Texture2D" uid="uid://du1npw0c2hnh1" path="res://Visuals/UI/pxkw_d.png" id="9_jc58k"]
 [ext_resource type="Texture2D" uid="uid://c16jwaxmy74wd" path="res://GameIcon.png" id="12_8jhy8"]
-[ext_resource type="Script" path="res://Scripts/ChangeLevelButton.gd" id="13_2w8ua"]
+[ext_resource type="Script" uid="uid://dcoeswpqvylev" path="res://Scripts/ChangeLevelButton.gd" id="13_2w8ua"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dntld"]
 font = ExtResource("1_aijgs")
@@ -27,6 +27,10 @@ font_size = 20
 outline_size = 1
 outline_color = Color(0.111197, 0.111197, 0.111197, 1)
 shadow_color = Color(0, 0, 0, 0.556863)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y558p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mkm6k"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -191,6 +195,7 @@ anchor_right = 0.027
 anchor_bottom = 0.049
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_y558p")
 disabled = true
 script = ExtResource("13_2w8ua")
 
@@ -210,7 +215,10 @@ anchor_left = 0.972
 anchor_right = 1.0
 anchor_bottom = 0.049
 grow_horizontal = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mkm6k")
 disabled = true
+shortcut_feedback = false
+shortcut_in_tooltip = false
 script = ExtResource("13_2w8ua")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/NextLevel"]
@@ -218,6 +226,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 0.00012207
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_qxws5")
