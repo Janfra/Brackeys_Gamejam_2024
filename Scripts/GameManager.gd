@@ -79,69 +79,72 @@ func _handle_new_game_state() -> void:
 	
 
 func _load_level_from_path(level_path : String) -> void:
-	if _is_transitioning:
-		printerr("Already transitioning")
+	if _get_is_transitioning_with_warning():
 		return
 	
 	if not level_path or not level_path.is_absolute_path():
 		printerr("Attempting to load invalid level")
 		return
 	
-	var nodeTree:SceneTree = get_tree()
-	if !_transition:
-		if !_create_transition():
-			return
+	if not _try_get_transition():
+		return
 	
 	# Start transitioning and wait for animation to end
-	_is_transitioning = true
-	_transition.play(TRANSITION_ANIMATION)
+	_start_transition()
 	await _transition.animation_finished
 	
 	# Start changing scene
+	var nodeTree:SceneTree = get_tree()
 	nodeTree.change_scene_to_file(level_path)
 	
 	# Double checking that we didnt lose the transition when changing scene
-	if not _transition:
-		printerr("Transition no longer valid")
-		_is_transitioning = false
+	if _verify_transition_is_valid():
 		return
 	
-	_transition.play_backwards(TRANSITION_ANIMATION)
-	_is_transitioning = false
+	_reverse_transition()
 	print("Transitioned to new level")
 	
 
 func _load_level(level : PackedScene) -> void:
-	if _is_transitioning:
-		printerr("Already transitioning")
+	if _get_is_transitioning_with_warning():
 		return
 	
 	if not level or not level.can_instantiate():
 		printerr("Attempting to load invalid level")
 		return
 	
-	var nodeTree:SceneTree = get_tree()
-	if not _transition:
-		if !_create_transition():
-			return
+	if not _try_get_transition():
+		return
 	
 	# Start transitioning and wait for animation to end
-	_is_transitioning = true
-	_transition.play(TRANSITION_ANIMATION)
+	_start_transition()
 	await _transition.animation_finished
 	
 	# Start changing scene
+	var nodeTree:SceneTree = get_tree()
 	nodeTree.change_scene_to_packed(level)
 	
 	# Double checking that we didnt lose the transition when changing scene
-	if not _transition:
-		printerr("Transition no longer valid")
-		_is_transitioning = false
+	if _verify_transition_is_valid():
 		return
 	
-	_transition.play_backwards(TRANSITION_ANIMATION)
-	_is_transitioning = false
+	_reverse_transition()
 	print("Transitioned to new level")
+	
+
+func _get_is_transitioning_with_warning() -> bool:
+	if _is_transitioning:
+		printerr("Already transitioning")
+	
+	return _is_transitioning
+	
+
+# Verify that transition has been created and referenced
+func _try_get_transition() -> bool:
+	if not _transition:
+		if !_create_transition():
+			return false
+	return true
 	
 
 ## Setups reference to scene transition
@@ -170,4 +173,21 @@ func _create_transition() -> bool:
 	
 	print("Generated transition scene")
 	return true
+	
+
+func _start_transition() -> void:
+	_is_transitioning = true
+	_transition.play(TRANSITION_ANIMATION)
+	
+
+func _verify_transition_is_valid() -> bool:
+	if not _transition:
+		printerr("Transition no longer valid")
+		_is_transitioning = false
+		return false
+	return true
+
+func _reverse_transition() -> void:
+	_transition.play_backwards(TRANSITION_ANIMATION)
+	_is_transitioning = false
 	
