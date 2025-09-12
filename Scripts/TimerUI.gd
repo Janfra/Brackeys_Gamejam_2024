@@ -19,7 +19,7 @@ func _disable_display() -> void:
 	
 
 func _display_new_record(time : float) -> void:
-	text = "NEW RECORD\n %.1f" % time
+	text = "NEW RECORD\n%.1f" % time
 	
 
 func _display_message(display : String) -> void:
