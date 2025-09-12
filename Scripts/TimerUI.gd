@@ -10,7 +10,7 @@ func _ready():
 	
 
 func _update_displayed_timer(time : float) -> void:
-	text = "%.1f" % time
+	text = "%.2f" % time
 	
 
 func _disable_display() -> void:
@@ -19,7 +19,7 @@ func _disable_display() -> void:
 	
 
 func _display_new_record(time : float) -> void:
-	text = "NEW RECORD\n%.1f" % time
+	text = "NEW RECORD\n%.2f" % time
 	
 
 func _display_message(display : String) -> void:
