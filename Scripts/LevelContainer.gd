@@ -1,8 +1,6 @@
 class_name LevelContainer
 extends Node2D
 
-const SAVE_PATH = "user://Saves/"
-
 @export_category("Config")
 @export
 var level_data: LevelData
@@ -13,6 +11,7 @@ var next_level_data: LevelData
 func _ready():
 	assert(level_data)
 	if level_data.is_valid():
+		SaveFile.load_level_data(level_data)
 		GameManager.set_level_data(level_data)
 	else:
 		return
@@ -24,9 +23,11 @@ func _ready():
 
 func _update_best_time(time : float) -> void:
 	level_data.record_time = time
+	SaveFile.save_level_data(level_data)
 	
 
 func _update_completion() -> void:
 	level_data.has_been_completed = true
+	SaveFile.save_level_data(level_data)
 	GameManager.load_next_level(next_level_data)
 	

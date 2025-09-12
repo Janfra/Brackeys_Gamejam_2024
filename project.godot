@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Safe Space"
-config/version="0.5.2"
+config/version="0.6.0"
 run/main_scene="res://Levels/main_menu.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://GameIcon.png"
@@ -20,6 +20,7 @@ config/icon="res://GameIcon.png"
 
 GameManager="*res://Scripts/GameManager.gd"
 GameTimer="*res://Scripts/GameTimer.gd"
+SaveFile="*res://Scripts/PlayerSaving.gd"
 
 [display]
 
