@@ -8,7 +8,7 @@ signal level_completed
 signal loading_next_level(level_data : LevelData)
 signal level_skipped
 
-const SCENE_TRANSITION_SCENE = preload("res://Scenes/scene_transition.tscn")
+const SCENE_TRANSITION_SCENE = preload("uid://c4mu5c7vxqdlk")
 const TRANSITION_ANIMATION = "fade_in"
 const DELAY_AFTER_COMPLETION = 0.5
 
