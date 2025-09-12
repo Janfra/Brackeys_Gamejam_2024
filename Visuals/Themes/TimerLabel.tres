@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://is23c3kl68nj"]
+
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_qymth"]
+
+[resource]
+line_spacing = 2.0
+font = ExtResource("1_qymth")
+font_size = 31
+outline_size = 8
+outline_color = Color(0.156863, 0.211765, 0.2, 1)

@@ -22,7 +22,6 @@ GameTimer="*res://Scripts/GameTimer.gd"
 
 [display]
 
-window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://dvam4ejmbv6b"
 mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
@@ -71,3 +70,4 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/lossless_compression/force_png=true
 environment/defaults/default_clear_color=Color(0.103743, 0.103744, 0.103744, 1)
+anti_aliasing/quality/screen_space_aa=1

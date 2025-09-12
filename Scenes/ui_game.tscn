@@ -1,18 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bm40fldw7onu3"]
+[gd_scene load_steps=8 format=3 uid="uid://bm40fldw7onu3"]
 
-[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_dgrak"]
+[ext_resource type="LabelSettings" uid="uid://is23c3kl68nj" path="res://Visuals/Themes/TimerLabel.tres" id="1_1tdhr"]
 [ext_resource type="Script" uid="uid://dg1r37csgebmc" path="res://Scripts/TimerUI.gd" id="1_tudvx"]
 [ext_resource type="Script" uid="uid://dcoeswpqvylev" path="res://Scripts/ChangeLevelButton.gd" id="3_2m3u2"]
 [ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="3_c8a3q"]
 [ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Visuals/UI/pxkw_arrow_right.png" id="4_cralk"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_k2p6u"]
-line_spacing = 2.0
-font = ExtResource("1_dgrak")
-font_size = 31
-outline_size = 1
-outline_color = Color(0.194349, 0.194349, 0.194349, 1)
-shadow_color = Color(0, 0, 0, 0.47451)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tdhr"]
 
@@ -41,7 +33,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 text = "You will be timed,
 come back to the start to reset the timer"
-label_settings = SubResource("LabelSettings_k2p6u")
+label_settings = ExtResource("1_1tdhr")
 horizontal_alignment = 1
 clip_text = true
 script = ExtResource("1_tudvx")

@@ -97,6 +97,7 @@ _data = {
 }
 
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("_trail_particles", "_explosion_particles", "_sprite", "_animation_player", "_collision_shape")]
+physics_interpolation_mode = 1
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_5ymol")
@@ -107,14 +108,25 @@ _animation_player = NodePath("AnimationPlayer")
 _collision_shape = NodePath("CollisionShape2D")
 
 [node name="TrailParticles" type="GPUParticles2D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_0t6ow")
 lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_0t6ow")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+physics_interpolation_mode = 1
 texture_filter = 1
 texture_repeat = 1
 material = SubResource("ShaderMaterial_b3gg0")
 scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ku54t")
+
+[node name="Outline" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0.662745)
+self_modulate = Color(0.156863, 0.211765, 0.2, 1)
+show_behind_parent = true
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-7.15256e-07, -7.15256e-07)
+scale = Vector2(1.15, 1.15)
 texture = ExtResource("2_ku54t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -123,13 +135,13 @@ shape = SubResource("RectangleShape2D_5gwp3")
 [node name="ExplosionParticles" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_8dk0g")
 lifetime = 0.2
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_8dk0g")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_kes6e")
+&"": SubResource("AnimationLibrary_kes6e")
 }
 autoplay = "appear"
