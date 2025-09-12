@@ -98,7 +98,7 @@ func _load_level_from_path(level_path : String) -> void:
 	nodeTree.change_scene_to_file(level_path)
 	
 	# Double checking that we didnt lose the transition when changing scene
-	if _verify_transition_is_valid():
+	if not _is_transition_still_valid():
 		return
 	
 	_reverse_transition()
@@ -125,7 +125,7 @@ func _load_level(level : PackedScene) -> void:
 	nodeTree.change_scene_to_packed(level)
 	
 	# Double checking that we didnt lose the transition when changing scene
-	if _verify_transition_is_valid():
+	if not _is_transition_still_valid():
 		return
 	
 	_reverse_transition()
@@ -180,7 +180,7 @@ func _start_transition() -> void:
 	_transition.play(TRANSITION_ANIMATION)
 	
 
-func _verify_transition_is_valid() -> bool:
+func _is_transition_still_valid() -> bool:
 	if not _transition:
 		printerr("Transition no longer valid")
 		_is_transitioning = false
