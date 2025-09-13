@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://bm40fldw7onu3"]
 
-[ext_resource type="LabelSettings" uid="uid://is23c3kl68nj" path="res://Visuals/Themes/TimerLabel.tres" id="1_1tdhr"]
-[ext_resource type="Script" uid="uid://dg1r37csgebmc" path="res://Scripts/UI/TimerUI.gd" id="1_tudvx"]
-[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="3_c8a3q"]
-[ext_resource type="Script" uid="uid://bfbatsc8s4d4c" path="res://Scripts/Actions/LevelChangeActions.gd" id="4_1tdhr"]
-[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Visuals/UI/pxkw_arrow_right.png" id="4_cralk"]
+[ext_resource type="LabelSettings" uid="uid://is23c3kl68nj" path="res://Visuals/Themes/TimerLabel.tres" id="1_mex35"]
+[ext_resource type="Script" uid="uid://dg1r37csgebmc" path="res://Scripts/UI/TimerUI.gd" id="2_cpid8"]
+[ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="3_rmhwg"]
+[ext_resource type="Script" uid="uid://bfbatsc8s4d4c" path="res://Scripts/Actions/LevelChangeActions.gd" id="4_6qp8k"]
+[ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Visuals/UI/pxkw_arrow_right.png" id="5_7bxou"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tdhr"]
 
@@ -33,10 +33,10 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
 text = "You will be timed,
 come back to the start to reset the timer"
-label_settings = ExtResource("1_1tdhr")
+label_settings = ExtResource("1_mex35")
 horizontal_alignment = 1
 clip_text = true
-script = ExtResource("1_tudvx")
+script = ExtResource("2_cpid8")
 
 [node name="BackLevel" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
@@ -56,10 +56,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("3_c8a3q")
+texture = ExtResource("3_rmhwg")
 
 [node name="LevelChangeActions" type="Node" parent="CanvasLayer/BackLevel"]
-script = ExtResource("4_1tdhr")
+script = ExtResource("4_6qp8k")
 metadata/_custom_type_script = "uid://bfbatsc8s4d4c"
 
 [node name="NextLevel" type="Button" parent="CanvasLayer"]
@@ -80,10 +80,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("4_cralk")
+texture = ExtResource("5_7bxou")
 
 [node name="LevelChangeActions" type="Node" parent="CanvasLayer/NextLevel"]
-script = ExtResource("4_1tdhr")
+script = ExtResource("4_6qp8k")
 metadata/_custom_type_script = "uid://bfbatsc8s4d4c"
 
 [connection signal="pressed" from="CanvasLayer/BackLevel" to="CanvasLayer/BackLevel/LevelChangeActions" method="on_level_skip"]

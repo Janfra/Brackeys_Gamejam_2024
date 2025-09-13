@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5po4yd85sn72"]
+[gd_scene load_steps=21 format=3 uid="uid://5po4yd85sn72"]
 
 [ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_aijgs"]
 [ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Visuals/UI/pxkw_arrow_down.png" id="2_hmwxj"]
@@ -8,10 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="4_41d0n"]
 [ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Visuals/UI/pxkw_arrow_up.png" id="5_tkh8y"]
 [ext_resource type="Texture2D" uid="uid://dpffyjwb1fdja" path="res://Visuals/UI/pxkw_w.png" id="6_hif7c"]
+[ext_resource type="Script" uid="uid://dccax0fgma80l" path="res://Scripts/UI/InputActionUI.gd" id="7_2eu7b"]
 [ext_resource type="Texture2D" uid="uid://cdgtlleqrc1re" path="res://Visuals/UI/pxkw_s.png" id="7_dfml7"]
+[ext_resource type="Resource" uid="uid://klmc844r00gj" path="res://Resources/InputAction/move_up.tres" id="7_gju5e"]
 [ext_resource type="Texture2D" uid="uid://bcoh5ph3yfccf" path="res://Visuals/UI/pxkw_a.png" id="8_drxqc"]
 [ext_resource type="Texture2D" uid="uid://du1npw0c2hnh1" path="res://Visuals/UI/pxkw_d.png" id="9_jc58k"]
 [ext_resource type="Texture2D" uid="uid://c16jwaxmy74wd" path="res://GameIcon.png" id="12_8jhy8"]
+[ext_resource type="Script" uid="uid://c7h113o2ehs8r" path="res://Scripts/Actions/InputSettingsActions.gd" id="13_mkm6k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dntld"]
 font = ExtResource("1_aijgs")
@@ -19,6 +22,9 @@ font_size = 50
 outline_size = 1
 outline_color = Color(0.111197, 0.111197, 0.111197, 1)
 shadow_color = Color(0, 0, 0, 0.556863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b8u61"]
+bg_color = Color(0.0588235, 0.0588235, 0.0588235, 0.588235)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ae7i5"]
 font = ExtResource("1_aijgs")
@@ -62,23 +68,63 @@ anchor_bottom = 0.296
 grow_horizontal = 2
 texture = ExtResource("12_8jhy8")
 
-[node name="StartButton" type="Button" parent="CanvasLayer"]
-anchors_preset = 14
-anchor_top = 0.5
+[node name="ButtonsVContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.469
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -4.0
-offset_bottom = 4.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StartButton" type="Button" parent="CanvasLayer/ButtonsVContainer"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_aijgs")
 theme_override_font_sizes/font_size = 27
 text = "Start"
 
-[node name="LevelChangeActions" type="Node" parent="CanvasLayer/StartButton"]
+[node name="LevelChangeActions" type="Node" parent="CanvasLayer/ButtonsVContainer/StartButton"]
 script = ExtResource("3_b8u61")
 load_level = ExtResource("3_1e3a6")
 metadata/_custom_type_script = "uid://bfbatsc8s4d4c"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/ButtonsVContainer"]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.588235)
+theme_override_fonts/font = ExtResource("1_aijgs")
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = SubResource("StyleBoxFlat_b8u61")
+text = "Settings
+"
+
+[node name="MoveUpRebindUI" type="Control" parent="CanvasLayer/ButtonsVContainer/SettingsButton" node_paths=PackedStringArray("key_label")]
+layout_mode = 1
+anchor_top = 1.114
+anchor_right = 1.0
+anchor_bottom = 2.447
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_2eu7b")
+key_label = NodePath("Label")
+metadata/_custom_type_script = "uid://dccax0fgma80l"
+
+[node name="Label" type="Label" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoveUpActions" type="Node" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI"]
+script = ExtResource("13_mkm6k")
+_action_data = ExtResource("7_gju5e")
+metadata/_custom_type_script = "uid://c7h113o2ehs8r"
 
 [node name="InputHint" type="Control" parent="CanvasLayer"]
 visible = false
@@ -313,7 +359,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="CanvasLayer/StartButton" to="CanvasLayer/StartButton" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/StartButton" to="CanvasLayer/StartButton/LevelChangeActions" method="on_level_load"]
-[connection signal="pressed" from="CanvasLayer/BackLevel" to="CanvasLayer/BackLevel" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/NextLevel" to="CanvasLayer/NextLevel" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/ButtonsVContainer/StartButton" to="CanvasLayer/ButtonsVContainer/StartButton/LevelChangeActions" method="on_level_load"]
+[connection signal="pressed" from="CanvasLayer/ButtonsVContainer/SettingsButton" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" method="toggle_listening"]
+[connection signal="requested_key_set" from="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI" method="on_show_requested_key"]
