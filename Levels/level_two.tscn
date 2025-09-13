@@ -10,10 +10,10 @@
 level_data = ExtResource("2_phunv")
 next_level_data = ExtResource("3_qey8u")
 
-[node name="BackLevel" parent="UI_Game/CanvasLayer" index="1"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/BackLevel" index="1"]
 load_level = ExtResource("4_pp1i7")
 
-[node name="NextLevel" parent="UI_Game/CanvasLayer" index="2"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/NextLevel" index="1"]
 load_level = ExtResource("3_qey8u")
 
 [node name="TileMap" parent="." index="2"]

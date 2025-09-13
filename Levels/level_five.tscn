@@ -16,10 +16,10 @@ size = Vector2(32, 16)
 level_data = ExtResource("2_v57d3")
 next_level_data = ExtResource("2_4yh2h")
 
-[node name="BackLevel" parent="UI_Game/CanvasLayer" index="1"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/BackLevel" index="1"]
 load_level = ExtResource("4_y20mw")
 
-[node name="NextLevel" parent="UI_Game/CanvasLayer" index="2"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/NextLevel" index="1"]
 load_level = ExtResource("2_4yh2h")
 
 [node name="TileMap" parent="." index="2"]

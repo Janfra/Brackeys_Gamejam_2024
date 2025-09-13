@@ -21,10 +21,10 @@ offset_top = 48.0
 offset_bottom = 48.0
 metadata/_edit_use_anchors_ = true
 
-[node name="BackLevel" parent="UI_Game/CanvasLayer" index="1"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/BackLevel" index="1"]
 load_level = ExtResource("4_tkoc6")
 
-[node name="NextLevel" parent="UI_Game/CanvasLayer" index="2"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/NextLevel" index="1"]
 load_level = ExtResource("3_u662p")
 
 [node name="TileMap" parent="." index="2"]

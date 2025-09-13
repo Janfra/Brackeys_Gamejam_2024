@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddgtym6cjqkvo"]
 
-[ext_resource type="Script" uid="uid://ca146d88b5bmv" path="res://Scripts/BaseTimerTrigger.gd" id="1_4ckbr"]
+[ext_resource type="Script" uid="uid://ca146d88b5bmv" path="res://Scripts/Objects/BaseTimerTrigger.gd" id="1_4ckbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uw11"]
 size = Vector2(64, 64)

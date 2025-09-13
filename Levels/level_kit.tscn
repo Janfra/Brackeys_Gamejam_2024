@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Visuals/Tiles/tile_set.tres" id="2_nmydw"]
 [ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="3_5frhg"]
 [ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/timer_start_trigger.tscn" id="4_bkhjy"]
-[ext_resource type="Script" uid="uid://ceud3mkpajl7w" path="res://Scripts/LevelContainer.gd" id="5_n6p4l"]
+[ext_resource type="Script" uid="uid://ceud3mkpajl7w" path="res://Scripts/Objects/LevelContainer.gd" id="5_n6p4l"]
 
 [node name="LevelKit" type="Node2D"]
 script = ExtResource("5_n6p4l")

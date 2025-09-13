@@ -18,9 +18,10 @@ config/icon="res://GameIcon.png"
 
 [autoload]
 
-GameManager="*res://Scripts/GameManager.gd"
-GameTimer="*res://Scripts/GameTimer.gd"
-SaveFile="*res://Scripts/PlayerSaving.gd"
+GameManager="*res://Scripts/Autoloads/GameManager.gd"
+GameTimer="*res://Scripts/Autoloads/GameTimer.gd"
+SaveFile="*res://Scripts/Autoloads/SaveFile.gd"
+GameSettings="*res://Scripts/Autoloads/GameSettings.gd"
 
 [display]
 

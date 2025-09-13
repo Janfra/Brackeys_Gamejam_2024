@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bm40fldw7onu3"]
 
 [ext_resource type="LabelSettings" uid="uid://is23c3kl68nj" path="res://Visuals/Themes/TimerLabel.tres" id="1_1tdhr"]
-[ext_resource type="Script" uid="uid://dg1r37csgebmc" path="res://Scripts/TimerUI.gd" id="1_tudvx"]
-[ext_resource type="Script" uid="uid://dcoeswpqvylev" path="res://Scripts/ChangeLevelButton.gd" id="3_2m3u2"]
+[ext_resource type="Script" uid="uid://dg1r37csgebmc" path="res://Scripts/UI/TimerUI.gd" id="1_tudvx"]
 [ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="3_c8a3q"]
+[ext_resource type="Script" uid="uid://bfbatsc8s4d4c" path="res://Scripts/Actions/LevelChangeActions.gd" id="4_1tdhr"]
 [ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Visuals/UI/pxkw_arrow_right.png" id="4_cralk"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1tdhr"]
@@ -23,11 +23,11 @@ grow_vertical = 2
 [node name="Timer" type="Label" parent="CanvasLayer"]
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = -1
-anchor_top = 0.015
+anchor_top = 0.037
 anchor_right = 1.0
-anchor_bottom = 0.015
-offset_top = 14.28
-offset_bottom = 114.28
+anchor_bottom = 0.191
+offset_top = 0.0240002
+offset_bottom = 0.231987
 grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
@@ -47,7 +47,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1tdhr")
-script = ExtResource("3_2m3u2")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/BackLevel"]
 layout_mode = 1
@@ -59,6 +58,10 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_c8a3q")
 
+[node name="LevelChangeActions" type="Node" parent="CanvasLayer/BackLevel"]
+script = ExtResource("4_1tdhr")
+metadata/_custom_type_script = "uid://bfbatsc8s4d4c"
+
 [node name="NextLevel" type="Button" parent="CanvasLayer"]
 anchors_preset = -1
 anchor_left = 0.972
@@ -68,7 +71,6 @@ grow_horizontal = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fmrx5")
-script = ExtResource("3_2m3u2")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/NextLevel"]
 layout_mode = 1
@@ -80,5 +82,9 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_cralk")
 
-[connection signal="pressed" from="CanvasLayer/BackLevel" to="CanvasLayer/BackLevel" method="_on_pressed"]
-[connection signal="pressed" from="CanvasLayer/NextLevel" to="CanvasLayer/NextLevel" method="_on_pressed"]
+[node name="LevelChangeActions" type="Node" parent="CanvasLayer/NextLevel"]
+script = ExtResource("4_1tdhr")
+metadata/_custom_type_script = "uid://bfbatsc8s4d4c"
+
+[connection signal="pressed" from="CanvasLayer/BackLevel" to="CanvasLayer/BackLevel/LevelChangeActions" method="on_level_skip"]
+[connection signal="pressed" from="CanvasLayer/NextLevel" to="CanvasLayer/NextLevel/LevelChangeActions" method="on_level_skip"]

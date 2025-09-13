@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cjukh3ks8fp28"]
 
 [ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Visuals/Tiles/tile_set.tres" id="1_e65on"]
-[ext_resource type="Script" uid="uid://ceud3mkpajl7w" path="res://Scripts/LevelContainer.gd" id="1_iumhb"]
+[ext_resource type="Script" uid="uid://ceud3mkpajl7w" path="res://Scripts/Objects/LevelContainer.gd" id="1_iumhb"]
 [ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/ui_game.tscn" id="1_yqu0t"]
 [ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/level_one_data.tres" id="2_b7w7x"]
 [ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="2_fpmr2"]
@@ -17,10 +17,10 @@ next_level_data = ExtResource("3_t1u6l")
 
 [node name="UI_Game" parent="." instance=ExtResource("1_yqu0t")]
 
-[node name="BackLevel" parent="UI_Game/CanvasLayer" index="1"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/BackLevel" index="1"]
 load_level = ExtResource("5_gjl12")
 
-[node name="NextLevel" parent="UI_Game/CanvasLayer" index="2"]
+[node name="LevelChangeActions" parent="UI_Game/CanvasLayer/NextLevel" index="1"]
 load_level = ExtResource("3_t1u6l")
 
 [node name="Camera2D" type="Camera2D" parent="."]

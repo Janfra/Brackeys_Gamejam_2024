@@ -1,11 +1,11 @@
 [gd_scene load_steps=81 format=3 uid="uid://do7u3hbt3hxac"]
 
-[ext_resource type="Script" uid="uid://cs2l8bl6ksnyv" path="res://Scripts/CharacterMovement2D.gd" id="1_uvj31"]
+[ext_resource type="Script" uid="uid://cs2l8bl6ksnyv" path="res://Scripts/Player/CharacterMovement2D.gd" id="1_uvj31"]
 [ext_resource type="Texture2D" uid="uid://bt4vauqh0a3jp" path="res://Visuals/Characters/idle.png" id="2_lhxhj"]
 [ext_resource type="Texture2D" uid="uid://cs5vp3f3p5o4w" path="res://Visuals/Characters/death.png" id="2_mjum7"]
 [ext_resource type="Texture2D" uid="uid://dfwgtap2cej5c" path="res://Visuals/Characters/run.png" id="3_wkq1e"]
-[ext_resource type="Script" uid="uid://cdwck0ogl5nkv" path="res://Scripts/PlayerAnimations.gd" id="4_gr3r5"]
-[ext_resource type="Script" uid="uid://dg4lyk5j23tw5" path="res://Scripts/Health.gd" id="5_noot1"]
+[ext_resource type="Script" uid="uid://cdwck0ogl5nkv" path="res://Scripts/Player/PlayerAnimations.gd" id="4_gr3r5"]
+[ext_resource type="Script" uid="uid://dg4lyk5j23tw5" path="res://Scripts/Components/Health.gd" id="5_noot1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1r7pj"]
 radius = 3.5
