@@ -2,9 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://cx0bisnluk85r" path="res://Visuals/Tiles/tile_set.tres" id="1_yr0gu"]
 [ext_resource type="PackedScene" uid="uid://do7u3hbt3hxac" path="res://Scenes/player_character.tscn" id="2_s5k14"]
-[ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/shooting_point.tscn" id="3_u4uj3"]
-[ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/ui_game.tscn" id="4_84tfw"]
-[ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/timer_start_trigger.tscn" id="5_yun55"]
+[ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/Obstacles/shooting_point.tscn" id="3_u4uj3"]
+[ext_resource type="PackedScene" uid="uid://bm40fldw7onu3" path="res://Scenes/UI/ui_game.tscn" id="4_84tfw"]
+[ext_resource type="PackedScene" uid="uid://ddgtym6cjqkvo" path="res://Scenes/Triggers/timer_start_trigger.tscn" id="5_yun55"]
 
 [node name="TestLevel" type="Node2D"]
 

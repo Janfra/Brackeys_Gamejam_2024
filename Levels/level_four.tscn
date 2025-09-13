@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://dqkix1hbemlg2" path="res://Levels/level_kit.tscn" id="1_cjm0o"]
 [ext_resource type="Resource" uid="uid://xaih8ub10hwu" path="res://Resources/level_four_data.tres" id="2_tjtss"]
 [ext_resource type="Resource" uid="uid://27hw6jwmeop8" path="res://Resources/level_five_data.tres" id="3_u662p"]
-[ext_resource type="PackedScene" uid="uid://d0w6vv4auota2" path="res://Scenes/timer_pause_trigger.tscn" id="4_8kq76"]
+[ext_resource type="PackedScene" uid="uid://d0w6vv4auota2" path="res://Scenes/Triggers/timer_pause_trigger.tscn" id="4_8kq76"]
 [ext_resource type="Resource" uid="uid://hkx4owlp34u1" path="res://Resources/level_three_data.tres" id="4_tkoc6"]
-[ext_resource type="PackedScene" uid="uid://c1j8aaoltgoux" path="res://Scenes/camera_move_trigger.tscn" id="5_apoui"]
-[ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/shooting_point.tscn" id="6_6y7ls"]
-[ext_resource type="PackedScene" uid="uid://bp3ny6bqm2be1" path="res://Scenes/death_trigger.tscn" id="7_fbued"]
+[ext_resource type="PackedScene" uid="uid://c1j8aaoltgoux" path="res://Scenes/Triggers/camera_move_trigger.tscn" id="5_apoui"]
+[ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/Obstacles/shooting_point.tscn" id="6_6y7ls"]
+[ext_resource type="PackedScene" uid="uid://bp3ny6bqm2be1" path="res://Scenes/Obstacles/death_trigger.tscn" id="7_fbued"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ed0ws"]
 size = Vector2(1, 63.195)
