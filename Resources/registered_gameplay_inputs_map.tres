@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="RegisteredInputsData" load_steps=7 format=3 uid="uid://isxv8ja5x7w"]
+
+[ext_resource type="Script" uid="uid://costocvnoo257" path="res://Scripts/Data/InputActionData.gd" id="1_uy50c"]
+[ext_resource type="Resource" uid="uid://vej5v4nvrdv8" path="res://Resources/InputAction/move_down.tres" id="2_8ahmc"]
+[ext_resource type="Resource" uid="uid://bd358m510ygb4" path="res://Resources/InputAction/move_left.tres" id="3_btcrm"]
+[ext_resource type="Resource" uid="uid://cdhqsa4ib813g" path="res://Resources/InputAction/move_right.tres" id="4_qb5gy"]
+[ext_resource type="Resource" uid="uid://klmc844r00gj" path="res://Resources/InputAction/move_up.tres" id="5_1pvyr"]
+[ext_resource type="Script" uid="uid://dhdgx531kovoj" path="res://Scripts/Data/RegisteredInputsData.gd" id="6_jdt4x"]
+
+[resource]
+script = ExtResource("6_jdt4x")
+registered_inputs = Array[ExtResource("1_uy50c")]([ExtResource("2_8ahmc"), ExtResource("3_btcrm"), ExtResource("4_qb5gy"), ExtResource("5_1pvyr")])
+_taken_keys = Dictionary[int, ExtResource("1_uy50c")]({
+65: ExtResource("3_btcrm"),
+68: ExtResource("4_qb5gy"),
+83: ExtResource("2_8ahmc"),
+87: ExtResource("5_1pvyr"),
+4194319: ExtResource("3_btcrm"),
+4194320: ExtResource("5_1pvyr"),
+4194321: ExtResource("4_qb5gy"),
+4194322: ExtResource("2_8ahmc")
+})
+metadata/_custom_type_script = "uid://dhdgx531kovoj"

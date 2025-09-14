@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="4_41d0n"]
 [ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Visuals/UI/pxkw_arrow_up.png" id="5_tkh8y"]
 [ext_resource type="Texture2D" uid="uid://dpffyjwb1fdja" path="res://Visuals/UI/pxkw_w.png" id="6_hif7c"]
-[ext_resource type="Resource" uid="uid://r40gnw1dtr43" path="res://Resources/InputTextureMap.tres" id="6_updob"]
+[ext_resource type="Resource" uid="uid://r40gnw1dtr43" path="res://Resources/input_texture_map.tres" id="6_updob"]
 [ext_resource type="Script" uid="uid://dccax0fgma80l" path="res://Scripts/UI/InputActionUI.gd" id="7_2eu7b"]
 [ext_resource type="Texture2D" uid="uid://cdgtlleqrc1re" path="res://Visuals/UI/pxkw_s.png" id="7_dfml7"]
 [ext_resource type="Resource" uid="uid://klmc844r00gj" path="res://Resources/InputAction/move_up.tres" id="7_gju5e"]
@@ -376,4 +376,5 @@ color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="CanvasLayer/ButtonsVContainer/StartButton" to="CanvasLayer/ButtonsVContainer/StartButton/LevelChangeActions" method="on_level_load"]
 [connection signal="pressed" from="CanvasLayer/ButtonsVContainer/SettingsButton" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" method="toggle_listening"]
+[connection signal="pressed" from="CanvasLayer/ButtonsVContainer/SettingsButton" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" method="on_confirm_rebind"]
 [connection signal="requested_key_set" from="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI" method="on_show_requested_key"]

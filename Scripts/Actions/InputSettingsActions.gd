@@ -3,10 +3,17 @@ extends Node
 
 @export
 var _action_data: InputActionData
+
 var _is_listening: bool
-var _requested_key: Key
+var _requested_key: Key = KEY_NONE
 
 signal requested_key_set(requested_key: Key)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_READY:
+		assert(_action_data, "{name} has null references.".format(self))
+		
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not _is_listening:
@@ -28,6 +35,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func toggle_listening() -> void:
 	_is_listening = not _is_listening # toggle
 	
+
+func on_confirm_rebind() -> void:
+	if _requested_key == KEY_NONE:
+		return
+	
+	GameSettings.rebind_gameplay_action_key(_action_data, _requested_key)
+	_requested_key = KEY_NONE
 
 func verify_action() -> void:
 	if not InputMap.has_action(_action_data.action_name):

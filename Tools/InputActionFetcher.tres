@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InputActionFetcher" load_steps=7 format=3 uid="uid://kj1c4dihsn3k"]
+
+[ext_resource type="Script" uid="uid://costocvnoo257" path="res://Scripts/Data/InputActionData.gd" id="1_bsvw6"]
+[ext_resource type="Resource" uid="uid://klmc844r00gj" path="res://Resources/InputAction/move_up.tres" id="1_h5a0k"]
+[ext_resource type="Script" uid="uid://d0fksrlksjnv5" path="res://Scripts/Tools/InputActionFetcher.gd" id="1_nsie7"]
+[ext_resource type="Resource" uid="uid://vej5v4nvrdv8" path="res://Resources/InputAction/move_down.tres" id="2_2my31"]
+[ext_resource type="Resource" uid="uid://bd358m510ygb4" path="res://Resources/InputAction/move_left.tres" id="3_m6der"]
+[ext_resource type="Resource" uid="uid://cdhqsa4ib813g" path="res://Resources/InputAction/move_right.tres" id="4_k6b3r"]
+
+[resource]
+script = ExtResource("1_nsie7")
+_target_actions = Array[ExtResource("1_bsvw6")]([ExtResource("2_2my31"), ExtResource("3_m6der"), ExtResource("4_k6b3r"), ExtResource("1_h5a0k")])
+metadata/_custom_type_script = "uid://d0fksrlksjnv5"

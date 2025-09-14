@@ -7,6 +7,7 @@ var _key_to_texture: Dictionary[Key, Texture]
 @export
 var _default_texture: Texture
 
+@warning_ignore("unused_private_class_variable")
 @export_tool_button("Add Common Key Values")
 var __Editor_add_keys = __Editor_add_common_keys
 
