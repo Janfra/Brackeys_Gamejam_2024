@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InputTextureMapData" load_steps=61 format=3 uid="uid://r40gnw1dtr43"]
+[gd_resource type="Resource" script_class="InputTextureMapData" load_steps=64 format=3 uid="uid://r40gnw1dtr43"]
 
 [ext_resource type="Texture2D" uid="uid://dvam4ejmbv6b" path="res://Visuals/UI/pointer_i.png" id="1_begbb"]
 [ext_resource type="Script" uid="uid://2utco3h5dhxe" path="res://Scripts/Data/InputTextureMapData.gd" id="1_tw5yf"]
@@ -60,12 +60,16 @@
 [ext_resource type="Texture2D" uid="uid://dbik77ltckbt8" path="res://Visuals/UI/pxkw_backslash.png" id="57_xsyri"]
 [ext_resource type="Texture2D" uid="uid://cl6k11six3gas" path="res://Visuals/UI/pxkw_bracket_right.png" id="58_atecw"]
 [ext_resource type="Texture2D" uid="uid://ct8qq6ytudux2" path="res://Visuals/UI/pxkw_underscore.png" id="59_awpai"]
+[ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Visuals/UI/pxkw_arrow_up.png" id="60_ae7u0"]
+[ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Visuals/UI/pxkw_arrow_down.png" id="61_iiwd2"]
+[ext_resource type="Texture2D" uid="uid://c4iejyauksfxf" path="res://Visuals/UI/pxkw_money.png" id="62_dhdeq"]
 
 [resource]
 script = ExtResource("1_tw5yf")
 _key_to_texture = Dictionary[int, Texture]({
 33: ExtResource("2_pekhs"),
 35: ExtResource("3_ragqj"),
+36: ExtResource("62_dhdeq"),
 37: ExtResource("4_d055r"),
 38: ExtResource("5_ae7u0"),
 39: ExtResource("6_iiwd2"),
@@ -121,7 +125,11 @@ _key_to_texture = Dictionary[int, Texture]({
 91: ExtResource("56_jmp1i"),
 92: ExtResource("57_xsyri"),
 93: ExtResource("58_atecw"),
-95: ExtResource("59_awpai")
+95: ExtResource("59_awpai"),
+4194319: ExtResource("25_66pmd"),
+4194320: ExtResource("60_ae7u0"),
+4194321: ExtResource("27_jlmm5"),
+4194322: ExtResource("61_iiwd2")
 })
 _default_texture = ExtResource("1_begbb")
 metadata/_custom_type_script = "uid://2utco3h5dhxe"
