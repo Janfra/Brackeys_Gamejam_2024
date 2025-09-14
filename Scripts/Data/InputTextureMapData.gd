@@ -8,14 +8,14 @@ var _key_to_texture: Dictionary[Key, Texture]
 var _default_texture: Texture
 
 @export_tool_button("Add Common Key Values")
-var _add_keys = _add_common_keys
+var __Editor_add_keys = __Editor_add_common_keys
 
 func get_key_texture(keycode: Key) -> Texture:
 	return _key_to_texture.get(keycode, _default_texture)
 	
 
 ## Adds keycodes ranging from 32 to 96 to the key to texture dictionary when in editor
-func _add_common_keys() -> void:
+func __Editor_add_common_keys() -> void:
 	if not Engine.is_editor_hint():
 		return
 	

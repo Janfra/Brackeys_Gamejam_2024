@@ -10,7 +10,11 @@ var keycodes: Array[Key] : get = _get_keycodes
 var _cache_keycodes: Array[Key]
 
 @export_tool_button("Verify Name And Get Keycodes")
-var _has_input = _verify_input_name
+var __Editor_has_input = __Editor_verify_input_name
+
+func on_action_events_rebinded() -> void:
+	InputMap.action_get_events(action_name)
+	
 
 func _get_keycodes() -> Array[Key]:
 	if _cache_keycodes == null:
@@ -18,7 +22,10 @@ func _get_keycodes() -> Array[Key]:
 	else:
 		return _cache_keycodes
 
-func _verify_input_name() -> void:
+func __Editor_verify_input_name() -> void:
+	if not Engine.is_editor_hint():
+		return
+	
 	_cache_keycodes.clear()
 	var input_setting_name = str("input/", action_name)
 	if not ProjectSettings.has_setting(input_setting_name):
@@ -26,9 +33,13 @@ func _verify_input_name() -> void:
 	else:
 		var input_dictionary: Dictionary = ProjectSettings.get_setting(input_setting_name)
 		if input_dictionary:
-			_set_keycodes_from_settings_dictionary(input_dictionary)
+			__Editor_set_keycodes_from_settings_dictionary(input_dictionary)
+			print("{action_name} project settings found!".format(self))
 
-func _set_keycodes_from_settings_dictionary(input_dictionary: Dictionary) -> void:
+func __Editor_set_keycodes_from_settings_dictionary(input_dictionary: Dictionary) -> void:
+	if not Engine.is_editor_hint():
+		return
+	
 	for inputEvent in input_dictionary["events"]:
 		if inputEvent is InputEventKey:
 			if inputEvent.keycode == 0:
