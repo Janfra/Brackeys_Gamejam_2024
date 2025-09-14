@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://5po4yd85sn72"]
+[gd_scene load_steps=22 format=3 uid="uid://5po4yd85sn72"]
 
 [ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_aijgs"]
 [ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Visuals/UI/pxkw_arrow_down.png" id="2_hmwxj"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="4_41d0n"]
 [ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Visuals/UI/pxkw_arrow_up.png" id="5_tkh8y"]
 [ext_resource type="Texture2D" uid="uid://dpffyjwb1fdja" path="res://Visuals/UI/pxkw_w.png" id="6_hif7c"]
+[ext_resource type="Resource" uid="uid://r40gnw1dtr43" path="res://Resources/InputTextureMap.tres" id="6_updob"]
 [ext_resource type="Script" uid="uid://dccax0fgma80l" path="res://Scripts/UI/InputActionUI.gd" id="7_2eu7b"]
 [ext_resource type="Texture2D" uid="uid://cdgtlleqrc1re" path="res://Visuals/UI/pxkw_s.png" id="7_dfml7"]
 [ext_resource type="Resource" uid="uid://klmc844r00gj" path="res://Resources/InputAction/move_up.tres" id="7_gju5e"]
@@ -100,7 +101,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_b8u61")
 text = "Settings
 "
 
-[node name="MoveUpRebindUI" type="Control" parent="CanvasLayer/ButtonsVContainer/SettingsButton" node_paths=PackedStringArray("key_label")]
+[node name="MoveUpRebindUI" type="Control" parent="CanvasLayer/ButtonsVContainer/SettingsButton" node_paths=PackedStringArray("_key_label", "_key_texture")]
 layout_mode = 1
 anchor_top = 1.114
 anchor_right = 1.0
@@ -108,7 +109,9 @@ anchor_bottom = 2.447
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_2eu7b")
-key_label = NodePath("Label")
+_key_map = ExtResource("6_updob")
+_key_label = NodePath("Label")
+_key_texture = NodePath("AspectRatioContainer/TextureRect")
 metadata/_custom_type_script = "uid://dccax0fgma80l"
 
 [node name="Label" type="Label" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI"]
@@ -125,6 +128,17 @@ vertical_alignment = 1
 script = ExtResource("13_mkm6k")
 _action_data = ExtResource("7_gju5e")
 metadata/_custom_type_script = "uid://c7h113o2ehs8r"
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.056
+anchor_bottom = 1.333
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/AspectRatioContainer"]
+layout_mode = 2
+expand_mode = 2
 
 [node name="InputHint" type="Control" parent="CanvasLayer"]
 visible = false
@@ -344,6 +358,7 @@ anchor_bottom = 0.856
 offset_left = -0.0092926
 offset_right = 0.000388145
 offset_bottom = -0.00771141
+grow_horizontal = 0
 grow_vertical = 2
 text = "Skip level button"
 label_settings = SubResource("LabelSettings_ae7i5")
