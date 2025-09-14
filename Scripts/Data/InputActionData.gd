@@ -13,8 +13,19 @@ var _cache_keycodes: Array[Key]
 var __Editor_has_input = __Editor_verify_input_name
 
 func on_action_events_rebinded() -> void:
-	InputMap.action_get_events(action_name)
+	var events: Array[InputEvent] = InputMap.action_get_events(action_name)
+	_set_cached_keycodes_with_input_events(events)
 	
+
+func _set_cached_keycodes_with_input_events(events: Array[InputEvent]) -> void:
+	_cache_keycodes.clear()
+	for event in events:
+		if event is InputEventKey:
+			if event.keycode == 0:
+				_cache_keycodes.append(event.physical_keycode as Key)
+			else:
+				_cache_keycodes.append(event.keycode as Key)
+		
 
 func _get_keycodes() -> Array[Key]:
 	if _cache_keycodes == null:
@@ -40,10 +51,6 @@ func __Editor_set_keycodes_from_settings_dictionary(input_dictionary: Dictionary
 	if not Engine.is_editor_hint():
 		return
 	
-	for inputEvent in input_dictionary["events"]:
-		if inputEvent is InputEventKey:
-			if inputEvent.keycode == 0:
-				_cache_keycodes.append(inputEvent.physical_keycode as Key)
-			else:
-				_cache_keycodes.append(inputEvent.keycode as Key)
+	var events: Array[InputEvent] = Array(input_dictionary["events"], TYPE_OBJECT, "InputEvent", null)
+	_set_cached_keycodes_with_input_events(events)
 	
