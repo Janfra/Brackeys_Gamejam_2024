@@ -5,6 +5,8 @@ extends Resource
 var action_name: StringName
 
 @export
+var display_name: String
+
 var _cache_keycodes: Array[Key]
 
 signal on_prerebind(action_data: InputActionData, keycodes: Array[Key])
@@ -16,9 +18,13 @@ func get_keycodes() -> Array[Key]:
 
 func on_action_events_rebinded() -> void:
 	on_prerebind.emit(self, _cache_keycodes)
+	set_cached_keycodes_from_input_map()
+	on_rebind.emit(self)
+	
+
+func set_cached_keycodes_from_input_map() -> void:
 	var events: Array[InputEvent] = InputMap.action_get_events(action_name)
 	_set_cached_keycodes_with_input_events(events)
-	on_rebind.emit(self)
 	
 
 func _set_cached_keycodes_with_input_events(events: Array[InputEvent]) -> void:

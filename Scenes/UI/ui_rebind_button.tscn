@@ -1,0 +1,87 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd6j57iej8wsm"]
+
+[ext_resource type="Script" uid="uid://dccax0fgma80l" path="res://Scripts/UI/InputActionUI.gd" id="1_2kd5w"]
+[ext_resource type="Script" uid="uid://c7h113o2ehs8r" path="res://Scripts/Actions/InputSettingsActions.gd" id="3_11w8b"]
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="4_11w8b"]
+[ext_resource type="Resource" uid="uid://klmc844r00gj" path="res://Resources/InputAction/move_up.tres" id="4_ck08s"]
+
+[sub_resource type="Gradient" id="Gradient_niwts"]
+offsets = PackedFloat32Array(0, 0.831169)
+colors = PackedColorArray(0.0588235, 0.0588235, 0.0588235, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_11w8b"]
+gradient = SubResource("Gradient_niwts")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_niwts"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="InputRebindUI" type="Control" node_paths=PackedStringArray("_input_actions", "_key_label")]
+custom_minimum_size = Vector2(100, 36)
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 0.099
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2kd5w")
+_input_actions = NodePath("InputSettingsActions")
+_key_label = NodePath("Button/KeycodeLabel")
+metadata/_custom_type_script = "uid://dccax0fgma80l"
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_11w8b")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.583
+anchor_top = 0.125
+anchor_right = 0.993
+anchor_bottom = 0.873
+theme_override_styles/normal = SubResource("StyleBoxFlat_niwts")
+
+[node name="KeycodeLabel" type="Label" parent="Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.456192
+offset_bottom = 0.0142975
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_11w8b")
+theme_override_font_sizes/font_size = 20
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InputLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.007
+anchor_right = 0.59
+anchor_bottom = 0.998
+offset_bottom = 0.128304
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_11w8b")
+theme_override_font_sizes/font_size = 26
+text = "Test"
+vertical_alignment = 1
+
+[node name="InputSettingsActions" type="Node" parent="."]
+script = ExtResource("3_11w8b")
+_action_data = ExtResource("4_ck08s")
+metadata/_custom_type_script = "uid://c7h113o2ehs8r"
+
+[connection signal="button_down" from="Button" to="." method="_select"]
+[connection signal="requested_key_set" from="InputSettingsActions" to="." method="on_show_requested_key"]

@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_286ub")
 action_name = &"move_left"
+display_name = "Move Left"
 _cache_keycodes = Array[int]([65, 4194319])
 metadata/_custom_type_script = "uid://costocvnoo257"

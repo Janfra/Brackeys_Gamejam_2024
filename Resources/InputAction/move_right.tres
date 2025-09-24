@@ -5,5 +5,6 @@
 [resource]
 script = ExtResource("1_jnc32")
 action_name = &"move_right"
+display_name = "Move Right"
 _cache_keycodes = Array[int]([68, 4194321])
 metadata/_custom_type_script = "uid://costocvnoo257"

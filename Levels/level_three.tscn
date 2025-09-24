@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://hjo3wg213o0q"]
 
 [ext_resource type="PackedScene" uid="uid://dqkix1hbemlg2" path="res://Levels/level_kit.tscn" id="1_fogyh"]
-[ext_resource type="Resource" uid="uid://hkx4owlp34u1" path="res://Resources/Level/level_three_data.tres" id="2_bjkj0"]
-[ext_resource type="Resource" uid="uid://xaih8ub10hwu" path="res://Resources/Level/level_four_data.tres" id="3_e8xoi"]
+[ext_resource type="Resource" uid="uid://hkx4owlp34u1" path="res://Resources/LevelCompletion/level_three_data.tres" id="2_bjkj0"]
+[ext_resource type="Resource" uid="uid://xaih8ub10hwu" path="res://Resources/LevelCompletion/level_four_data.tres" id="3_e8xoi"]
 [ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/Obstacles/shooting_point.tscn" id="3_j4pfm"]
-[ext_resource type="Resource" uid="uid://c6jcr6kqntumd" path="res://Resources/Level/level_two_data.tres" id="4_q5xfy"]
+[ext_resource type="Resource" uid="uid://c6jcr6kqntumd" path="res://Resources/LevelCompletion/level_two_data.tres" id="4_q5xfy"]
 [ext_resource type="PackedScene" uid="uid://d0w6vv4auota2" path="res://Scenes/Triggers/timer_pause_trigger.tscn" id="5_ocn6a"]
 
 [node name="LevelThree" instance=ExtResource("1_fogyh")]

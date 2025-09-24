@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cxss8awc4lieo"]
 
 [ext_resource type="PackedScene" uid="uid://dqkix1hbemlg2" path="res://Levels/level_kit.tscn" id="1_g01iu"]
-[ext_resource type="Resource" uid="uid://c6jcr6kqntumd" path="res://Resources/Level/level_two_data.tres" id="2_phunv"]
-[ext_resource type="Resource" uid="uid://hkx4owlp34u1" path="res://Resources/Level/level_three_data.tres" id="3_qey8u"]
+[ext_resource type="Resource" uid="uid://c6jcr6kqntumd" path="res://Resources/LevelCompletion/level_two_data.tres" id="2_phunv"]
+[ext_resource type="Resource" uid="uid://hkx4owlp34u1" path="res://Resources/LevelCompletion/level_three_data.tres" id="3_qey8u"]
 [ext_resource type="PackedScene" uid="uid://c2kdkfjcr3ucc" path="res://Scenes/Obstacles/shooting_point.tscn" id="3_uyaud"]
-[ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/Level/level_one_data.tres" id="4_pp1i7"]
+[ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/LevelCompletion/level_one_data.tres" id="4_pp1i7"]
 
 [node name="LevelTwo" instance=ExtResource("1_g01iu")]
 level_data = ExtResource("2_phunv")

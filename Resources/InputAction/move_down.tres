@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_qmm84")
 action_name = &"move_down"
-keycodes = Array[int]([83, 4194322])
+display_name = "Move Down"
 metadata/_custom_type_script = "uid://costocvnoo257"

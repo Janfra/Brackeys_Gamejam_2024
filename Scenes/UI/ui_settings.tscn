@@ -1,0 +1,191 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq7to50fcmbju"]
+
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_ha0dy"]
+[ext_resource type="Script" uid="uid://v6lstq5jg0r3" path="res://Scripts/UI/SettingsUI.gd" id="1_k17at"]
+[ext_resource type="Script" uid="uid://dhj841wudgot8" path="res://Scripts/Components/GenericInputListener.gd" id="2_by1xg"]
+[ext_resource type="PackedScene" uid="uid://dd6j57iej8wsm" path="res://Scenes/UI/ui_rebind_button.tscn" id="2_n0r5x"]
+[ext_resource type="Resource" uid="uid://vej5v4nvrdv8" path="res://Resources/InputAction/move_down.tres" id="3_n0r5x"]
+[ext_resource type="Resource" uid="uid://cdhqsa4ib813g" path="res://Resources/InputAction/move_right.tres" id="4_tlbw8"]
+[ext_resource type="Resource" uid="uid://bd358m510ygb4" path="res://Resources/InputAction/move_left.tres" id="5_dxns8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy4t6"]
+bg_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k17at"]
+bg_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
+[node name="UiSettings" type="Control" node_paths=PackedStringArray("_input_listener", "_rebind_uis")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k17at")
+_input_listener = NodePath("GenericInputListener")
+_rebind_uis = [NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI"), NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI2"), NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI3"), NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI4")]
+
+[node name="GenericInputListener" type="Node" parent="."]
+script = ExtResource("2_by1xg")
+metadata/_custom_type_script = "uid://dhj841wudgot8"
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wy4t6")
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0.156863, 0.211765, 0.2, 1)
+theme_override_fonts/font = ExtResource("1_ha0dy")
+theme_override_font_sizes/font_size = 40
+text = "Controls"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="InputRebindUI" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_n0r5x")]
+layout_mode = 2
+
+[node name="InputLabel" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI" index="2"]
+anchor_right = 0.536
+anchor_bottom = 1.0
+offset_left = -0.0640001
+offset_right = 0.527954
+offset_bottom = 0.0
+text = "Move Up"
+
+[node name="InputRebindUI2" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_n0r5x")]
+layout_mode = 2
+
+[node name="InputLabel" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI2" index="2"]
+anchor_right = 0.536
+anchor_bottom = 1.0
+offset_left = -0.0640001
+offset_right = 0.527954
+offset_bottom = 0.0
+text = "Move Down"
+
+[node name="InputSettingsActions" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI2" index="3"]
+_action_data = ExtResource("3_n0r5x")
+
+[node name="InputRebindUI3" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_n0r5x")]
+layout_mode = 2
+
+[node name="InputLabel" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI3" index="2"]
+anchor_right = 0.536
+anchor_bottom = 1.0
+offset_left = -0.0640001
+offset_right = 0.527954
+offset_bottom = 0.0
+text = "Move Right"
+
+[node name="InputSettingsActions" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI3" index="3"]
+_action_data = ExtResource("4_tlbw8")
+
+[node name="InputRebindUI4" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_n0r5x")]
+layout_mode = 2
+
+[node name="InputLabel" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI4" index="2"]
+anchor_right = 0.536
+anchor_bottom = 1.0
+offset_left = -0.0640001
+offset_right = 0.527954
+offset_bottom = 0.0
+text = "Move Left"
+
+[node name="InputSettingsActions" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI4" index="3"]
+_action_data = ExtResource("5_dxns8")
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="SettingsCloseButtons" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+alignment = 1
+
+[node name="Spacer" type="Control" parent="VBoxContainer/SettingsCloseButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/SettingsCloseButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_ha0dy")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_k17at")
+text = "Close
+"
+autowrap_mode = 3
+
+[node name="ConfirmButton" type="Button" parent="VBoxContainer/SettingsCloseButtons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_ha0dy")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_k17at")
+text = "Confirm Changes"
+
+[node name="Spacer2" type="Control" parent="VBoxContainer/SettingsCloseButtons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="on_key_input_registered" from="GenericInputListener" to="." method="_set_requested_key_on_rebinder"]
+[connection signal="button_up" from="VBoxContainer/SettingsCloseButtons/CloseButton" to="." method="undo_and_close_settings"]
+[connection signal="button_up" from="VBoxContainer/SettingsCloseButtons/ConfirmButton" to="." method="apply_and_close_settings"]
+
+[editable path="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI"]
+[editable path="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI2"]
+[editable path="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI3"]
+[editable path="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI4"]

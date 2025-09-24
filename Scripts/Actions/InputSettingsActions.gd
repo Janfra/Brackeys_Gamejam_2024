@@ -3,8 +3,6 @@ extends Node
 
 @export
 var _action_data: InputActionData
-
-var _is_listening: bool
 var _requested_key: Key = KEY_NONE
 
 signal requested_key_set(requested_key: Key)
@@ -15,25 +13,23 @@ func _notification(what: int) -> void:
 		
 	
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not _is_listening:
-		return
+func get_target_action_data() -> InputActionData:
+	return _action_data
 	
-	if !event.is_action_type():
-		return
-	
-	if event.is_echo():
-		return
-	
-	if event is InputEventKey:
-		_requested_key = event.keycode
-		requested_key_set.emit(_requested_key)
-	
-	_is_listening = false
-	get_viewport().set_input_as_handled()
 
-func toggle_listening() -> void:
-	_is_listening = not _is_listening # toggle
+func set_requested_key(keycode : Key) -> void:
+	_requested_key = keycode
+	if (keycode != KEY_NONE):
+		requested_key_set.emit(_requested_key)
+		
+	
+
+func get_primary_keycode() -> Key:
+	var keycodes = _action_data.get_keycodes()
+	if keycodes.is_empty():
+		return GameSettings.get_primary_event_keycode(_action_data)
+	else:
+		return keycodes.get(0)
 	
 
 func on_confirm_rebind() -> void:

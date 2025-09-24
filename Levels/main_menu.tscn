@@ -1,21 +1,18 @@
-[gd_scene load_steps=22 format=3 uid="uid://5po4yd85sn72"]
+[gd_scene load_steps=19 format=3 uid="uid://5po4yd85sn72"]
 
 [ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_aijgs"]
 [ext_resource type="Texture2D" uid="uid://c887peyenpg8k" path="res://Visuals/UI/pxkw_arrow_down.png" id="2_hmwxj"]
-[ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/Level/level_one_data.tres" id="3_1e3a6"]
+[ext_resource type="Resource" uid="uid://catrjm341hp7o" path="res://Resources/LevelCompletion/level_one_data.tres" id="3_1e3a6"]
 [ext_resource type="Script" uid="uid://bfbatsc8s4d4c" path="res://Scripts/Actions/LevelChangeActions.gd" id="3_b8u61"]
 [ext_resource type="Texture2D" uid="uid://beaph4xdx0cox" path="res://Visuals/UI/pxkw_arrow_right.png" id="3_qxws5"]
 [ext_resource type="Texture2D" uid="uid://ney3eivxw0tt" path="res://Visuals/UI/pxkw_arrow_left.png" id="4_41d0n"]
 [ext_resource type="Texture2D" uid="uid://c25kuotfd8uru" path="res://Visuals/UI/pxkw_arrow_up.png" id="5_tkh8y"]
 [ext_resource type="Texture2D" uid="uid://dpffyjwb1fdja" path="res://Visuals/UI/pxkw_w.png" id="6_hif7c"]
-[ext_resource type="Resource" uid="uid://r40gnw1dtr43" path="res://Resources/input_texture_map.tres" id="6_updob"]
-[ext_resource type="Script" uid="uid://dccax0fgma80l" path="res://Scripts/UI/InputActionUI.gd" id="7_2eu7b"]
 [ext_resource type="Texture2D" uid="uid://cdgtlleqrc1re" path="res://Visuals/UI/pxkw_s.png" id="7_dfml7"]
-[ext_resource type="Resource" uid="uid://klmc844r00gj" path="res://Resources/InputAction/move_up.tres" id="7_gju5e"]
 [ext_resource type="Texture2D" uid="uid://bcoh5ph3yfccf" path="res://Visuals/UI/pxkw_a.png" id="8_drxqc"]
 [ext_resource type="Texture2D" uid="uid://du1npw0c2hnh1" path="res://Visuals/UI/pxkw_d.png" id="9_jc58k"]
 [ext_resource type="Texture2D" uid="uid://c16jwaxmy74wd" path="res://GameIcon.png" id="12_8jhy8"]
-[ext_resource type="Script" uid="uid://c7h113o2ehs8r" path="res://Scripts/Actions/InputSettingsActions.gd" id="13_mkm6k"]
+[ext_resource type="PackedScene" uid="uid://cq7to50fcmbju" path="res://Scenes/UI/ui_settings.tscn" id="13_mkm6k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dntld"]
 font = ExtResource("1_aijgs")
@@ -100,45 +97,6 @@ theme_override_font_sizes/font_size = 27
 theme_override_styles/normal = SubResource("StyleBoxFlat_b8u61")
 text = "Settings
 "
-
-[node name="MoveUpRebindUI" type="Control" parent="CanvasLayer/ButtonsVContainer/SettingsButton" node_paths=PackedStringArray("_key_label", "_key_texture")]
-layout_mode = 1
-anchor_top = 1.114
-anchor_right = 1.0
-anchor_bottom = 2.447
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_2eu7b")
-_key_map = ExtResource("6_updob")
-_key_label = NodePath("Label")
-_key_texture = NodePath("AspectRatioContainer/TextureRect")
-metadata/_custom_type_script = "uid://dccax0fgma80l"
-
-[node name="Label" type="Label" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MoveUpActions" type="Node" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI"]
-script = ExtResource("13_mkm6k")
-_action_data = ExtResource("7_gju5e")
-metadata/_custom_type_script = "uid://c7h113o2ehs8r"
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI"]
-custom_minimum_size = Vector2(16, 16)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.056
-anchor_bottom = 1.333
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/AspectRatioContainer"]
-layout_mode = 2
-expand_mode = 2
 
 [node name="InputHint" type="Control" parent="CanvasLayer"]
 visible = false
@@ -374,7 +332,8 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
+[node name="UiSettings" parent="CanvasLayer" instance=ExtResource("13_mkm6k")]
+visible = false
+
 [connection signal="pressed" from="CanvasLayer/ButtonsVContainer/StartButton" to="CanvasLayer/ButtonsVContainer/StartButton/LevelChangeActions" method="on_level_load"]
-[connection signal="pressed" from="CanvasLayer/ButtonsVContainer/SettingsButton" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" method="toggle_listening"]
-[connection signal="pressed" from="CanvasLayer/ButtonsVContainer/SettingsButton" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" method="on_confirm_rebind"]
-[connection signal="requested_key_set" from="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI/MoveUpActions" to="CanvasLayer/ButtonsVContainer/SettingsButton/MoveUpRebindUI" method="on_show_requested_key"]
+[connection signal="button_down" from="CanvasLayer/ButtonsVContainer/SettingsButton" to="CanvasLayer/UiSettings" method="show_settings"]

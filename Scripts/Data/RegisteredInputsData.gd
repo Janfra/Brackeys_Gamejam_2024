@@ -12,6 +12,12 @@ var _taken_keys: Dictionary[Key, InputActionData]
 @export_tool_button("Set taken keys")
 var __Editor_get_taken = __Editor_set_taken_keys
 
+func update_registered_inputs_cache() -> void:
+	for input in registered_inputs:
+		input.set_cached_keycodes_from_input_map()
+		
+	
+
 func get_key_owner(keycode : Key) -> InputActionData:
 	return _taken_keys.get(keycode)
 	
