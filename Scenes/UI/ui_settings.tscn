@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq7to50fcmbju"]
+[gd_scene load_steps=11 format=3 uid="uid://cq7to50fcmbju"]
 
 [ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_ha0dy"]
 [ext_resource type="Script" uid="uid://v6lstq5jg0r3" path="res://Scripts/UI/SettingsUI.gd" id="1_k17at"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://vej5v4nvrdv8" path="res://Resources/InputAction/move_down.tres" id="3_n0r5x"]
 [ext_resource type="Resource" uid="uid://cdhqsa4ib813g" path="res://Resources/InputAction/move_right.tres" id="4_tlbw8"]
 [ext_resource type="Resource" uid="uid://bd358m510ygb4" path="res://Resources/InputAction/move_left.tres" id="5_dxns8"]
+[ext_resource type="LabelSettings" uid="uid://bfj4rkwntdoc8" path="res://Visuals/Themes/TextLabel.tres" id="8_1x5tl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy4t6"]
 bg_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
@@ -18,7 +19,7 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 
-[node name="UiSettings" type="Control" node_paths=PackedStringArray("_input_listener", "_rebind_uis")]
+[node name="UiSettings" type="Control" node_paths=PackedStringArray("_input_listener", "_rebind_uis", "_hint_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +29,7 @@ grow_vertical = 2
 script = ExtResource("1_k17at")
 _input_listener = NodePath("GenericInputListener")
 _rebind_uis = [NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI"), NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI2"), NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI3"), NodePath("VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/InputRebindUI4")]
+_hint_label = NodePath("VBoxContainer/Hint")
 
 [node name="GenericInputListener" type="Node" parent="."]
 script = ExtResource("2_by1xg")
@@ -142,6 +144,14 @@ _action_data = ExtResource("5_dxns8")
 [node name="Spacer2" type="Control" parent="VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
+
+[node name="Hint" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 8
+label_settings = ExtResource("8_1x5tl")
+horizontal_alignment = 1
+clip_text = true
 
 [node name="SettingsCloseButtons" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 30)

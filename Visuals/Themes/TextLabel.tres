@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bfj4rkwntdoc8"]
+
+[ext_resource type="FontFile" uid="uid://8niay86l613x" path="res://Visuals/UI/chary___.ttf" id="1_rlcf1"]
+
+[resource]
+resource_local_to_scene = true
+font = ExtResource("1_rlcf1")
+font_size = 20
+font_color = Color(1, 1, 1, 0.521569)

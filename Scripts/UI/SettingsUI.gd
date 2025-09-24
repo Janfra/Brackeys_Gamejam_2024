@@ -7,11 +7,15 @@ var _input_listener: GenericInputListener
 @export
 var _rebind_uis: Array[InputActionUI]
 
+@export
+var _hint_label: Label
+
 var _modified_input_actions: Array[InputActionUI]
 var _current_input_action: InputActionUI
 
 func _ready() -> void:
 	assert(_input_listener)
+	assert(_hint_label)
 	for action_UI in _rebind_uis:
 		action_UI.on_selected.connect(_on_input_rebind_ui_selected.bind())
 		
@@ -57,6 +61,9 @@ func _set_requested_key_on_rebinder(keycode: Key) -> void:
 		if (not _modified_input_actions.has(_current_input_action)):
 			_modified_input_actions.append(_current_input_action)
 		
+		_hint_label.visible = false
+	else:
+		_show_key_conflict_hint(keycode)
 	
 	_current_input_action = null
 	
@@ -71,4 +78,11 @@ func _on_input_rebind_ui_selected(input_action: InputActionUI) -> void:
 		_current_input_action = input_action
 		_input_listener.set_listening(true)
 		
+	
+
+func _show_key_conflict_hint(keycode: Key) -> void:
+	var action_data: InputActionData = GameSettings.get_key_owner(keycode)
+	var hint_text = "Key {} is already bind to {}".format([OS.get_keycode_string(keycode), action_data.display_name], "{}")
+	_hint_label.text = hint_text
+	_hint_label.visible = true
 	
