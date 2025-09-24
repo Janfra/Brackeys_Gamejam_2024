@@ -29,6 +29,7 @@ func set_requested_rebind_key(keycode: Key) -> bool:
 
 func clear_rebind_key() -> void:
 	_input_actions.set_requested_key(KEY_NONE)
+	_set_key_label_text(_input_actions.get_primary_keycode())
 	
 
 func confirm_changes() -> void:

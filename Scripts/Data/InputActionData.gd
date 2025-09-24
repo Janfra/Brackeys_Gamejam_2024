@@ -13,6 +13,8 @@ signal on_prerebind(action_data: InputActionData, keycodes: Array[Key])
 signal on_rebind(action_data: InputActionData)
 
 func get_keycodes() -> Array[Key]:
+	if _cache_keycodes.is_empty():
+		set_cached_keycodes_from_input_map()
 	return _cache_keycodes
 	
 

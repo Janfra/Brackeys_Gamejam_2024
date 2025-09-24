@@ -9,7 +9,7 @@ enum REBIND_RESULT { OK, CONFLICT, INVALID_INPUT, }
 
 func _ready() -> void:
 	_registered_gameplay_inputs._start_listening_for_signals()
-	_registered_gameplay_inputs.update_registered_inputs_cache()
+	# TODO: Load config file inputs and then update the input data
 	
 
 func get_primary_event_keycode(action_data: InputActionData) -> Key:
